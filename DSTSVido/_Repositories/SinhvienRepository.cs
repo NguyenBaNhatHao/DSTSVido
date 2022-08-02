@@ -30,13 +30,24 @@ namespace DSTSVido._Repositories
 
         public async Task<string> InsertData(Sinhvien model)
         {
-                HttpClient client = new HttpClient();
-                string sinhvien = JsonConvert.SerializeObject(model);
-                HttpContent c = new StringContent(sinhvien, Encoding.UTF8, "application/json");
-                HttpResponseMessage httpResponse = client.PostAsync("https://admintt.viendong.edu.vn/api/sinhvien", c).GetAwaiter().GetResult(); //check doi link api
-                httpResponse.EnsureSuccessStatusCode();
-                string responseString = await httpResponse.Content.ReadAsStringAsync();
-                return responseString;
+            HttpClient client = new HttpClient();
+            string sinhvien = JsonConvert.SerializeObject(model);
+            HttpContent c = new StringContent(sinhvien, Encoding.UTF8, "application/json");
+            HttpResponseMessage httpResponse = client.PostAsync("https://admintt.viendong.edu.vn/api/sinhvien", c).GetAwaiter().GetResult(); 
+            httpResponse.EnsureSuccessStatusCode();
+            string responseString = await httpResponse.Content.ReadAsStringAsync();
+            return responseString;
+        }
+
+        public async Task<string> UpdateData(Sinhvien model)
+        {
+            HttpClient client = new HttpClient();
+            string sinhvien = JsonConvert.SerializeObject(model);
+            HttpContent c = new StringContent(sinhvien, Encoding.UTF8, "application/json");
+            HttpResponseMessage httpResponse = client.PutAsync("https://localhost:7070/api/sinhvien/"+model.id, c).GetAwaiter().GetResult(); //check doi link api
+            httpResponse.EnsureSuccessStatusCode();
+            string responseString = await httpResponse.Content.ReadAsStringAsync();
+            return responseString;
         }
     }
 }

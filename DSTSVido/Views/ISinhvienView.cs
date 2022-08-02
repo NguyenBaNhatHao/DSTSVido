@@ -36,6 +36,7 @@ namespace DSTSVido.Views
         event EventHandler ImportDataEvent;
         event EventHandler EditData;
         event EventHandler SaveEvent;
+        event EventHandler UpdateEditData;
 
         void SetSinhVienListBindingSource(BindingSource sinhvienList);
         /*    void SetTrungTuyenlistBindingSource(BindingSource trungtuyenlist);*/

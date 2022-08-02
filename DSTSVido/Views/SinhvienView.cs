@@ -16,6 +16,7 @@ namespace DSTSVido
         public SinhvienView()
         {
             InitializeComponent();
+            tcTrungTuyenDetail.TabPages.Remove(tabPageSvDetail);
             AssociateAndRaiseViewEvents();
         }
         private void AssociateAndRaiseViewEvents()
@@ -40,47 +41,57 @@ namespace DSTSVido
                     SearchEventTT?.Invoke(this, EventArgs.Empty);
             };
             //Status
-            //btnEditData.Click += (s, e) =>
-            //{
-            //    if (tcTrungTuyenDetail.TabPages.Count > 1)
-            //    {
-            //        tcTrungTuyenDetail.TabPages.Remove(tabPageTtDetail);
-            //    }
-            //    tcTrungTuyenDetail.TabPages.Add(tabPageTtDetail);
-            //    EditData?.Invoke(this, EventArgs.Empty);
+            btnEditData.Click += (s, e) =>
+            {
+                tcTrungTuyenDetail.TabPages.Add(tabPageSvDetail);
+                //EditData?.Invoke(this, EventArgs.Empty);
 
-            //    txtTinh.Text = Convert.ToString(dataGridView2[1, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtName.Text = Convert.ToString(dataGridView2[2, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtNgay.Text = Convert.ToString(dataGridView2[3, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtThang.Text = Convert.ToString(dataGridView2[4, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtNam.Text = Convert.ToString(dataGridView2[5, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtIdNumber.Text = Convert.ToString(dataGridView2[6, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtSchool.Text = Convert.ToString(dataGridView2[7, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtClass.Text = Convert.ToString(dataGridView2[8, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtPhoneNumber.Text = Convert.ToString(dataGridView2[9, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtIdXetTuyen.Text = Convert.ToString(dataGridView2[10, dataGridView2.CurrentCell.RowIndex].Value);
-            //    txtStatus.Text = Convert.ToString(dataGridView2[11, dataGridView2.CurrentCell.RowIndex].Value);
-            //    cbEditTrungTuyen.Text = Convert.ToString(dataGridView2[12, dataGridView2.CurrentCell.RowIndex].Value);
-
-            //};
+                txtSv_id.Text = Convert.ToString(dataGridView2[1, dataGridView2.CurrentCell.RowIndex].Value);
+                txtSv_name.Text = Convert.ToString(dataGridView2[2, dataGridView2.CurrentCell.RowIndex].Value);
+                txtSv_ngaysinh.Text = Convert.ToString(dataGridView2[3, dataGridView2.CurrentCell.RowIndex].Value);
+                txtSv_nganh.Text = Convert.ToString(dataGridView2[4, dataGridView2.CurrentCell.RowIndex].Value);
+                txtSv_hedaotao.Text = Convert.ToString(dataGridView2[5, dataGridView2.CurrentCell.RowIndex].Value);
+                txtSv_ketqua.Text = Convert.ToString(dataGridView2[6, dataGridView2.CurrentCell.RowIndex].Value);
+                txtSv_hinhthuc.Text = Convert.ToString(dataGridView2[7, dataGridView2.CurrentCell.RowIndex].Value);
+                txtSv_tinhtrang.Text = Convert.ToString(dataGridView2[8, dataGridView2.CurrentCell.RowIndex].Value);
+                txtSv_email.Text = Convert.ToString(dataGridView2[9, dataGridView2.CurrentCell.RowIndex].Value);
+                
+            };
             //cboxstatus.TextChanged += (s, e) =>
             //{
             //    SearchEventTT?.Invoke(this, EventArgs.Empty);
             //};
 
-            //btnCancelEdit.Click += (s, e) =>
-            //{
-            //    tcTrungTuyenDetail.TabPages.Remove(tabPageTtDetail);
-            //    CancelData?.Invoke(this, EventArgs.Empty);
-            //};
-            //btnSaveEdit.Click += (s, e) => {
-            //    SaveEvent?.Invoke(this, EventArgs.Empty);
-            //    if (isSuccessful)
-            //    {
-            //        tcTrungTuyenDetail.TabPages.Remove(tabPageTtDetail);
-            //    }
-            //    MessageBox.Show(Message);
-            //};
+            btnCancelEdit.Click += (s, e) =>
+            {
+                tcTrungTuyenDetail.TabPages.Remove(tabPageSvDetail);
+                CancelData?.Invoke(this, EventArgs.Empty);
+            };
+            btnSaveEdit.Click += (s, e) =>
+            {
+                if (string.IsNullOrEmpty(txtSv_id.Text) || string.IsNullOrEmpty(txtSv_name.Text) || string.IsNullOrEmpty(txtSv_ngaysinh.Text) || 
+                 string.IsNullOrEmpty(txtSv_nganh.Text) || string.IsNullOrEmpty(txtSv_hedaotao.Text) || 
+                string.IsNullOrEmpty(txtSv_ketqua.Text) || string.IsNullOrEmpty(txtSv_hinhthuc.Text) || string.IsNullOrEmpty(txtSv_tinhtrang.Text) || string.IsNullOrEmpty(txtSv_email.Text))
+                {
+                    MessageBox.Show("Xin hãy nhập đủ dữ liệu");
+                }
+                else
+                {
+                    dataGridView2[1, dataGridView2.CurrentCell.RowIndex].Value = txtSv_id.Text;
+                    dataGridView2[2, dataGridView2.CurrentCell.RowIndex].Value = txtSv_name.Text;
+                    dataGridView2[3, dataGridView2.CurrentCell.RowIndex].Value = txtSv_ngaysinh.Text;
+                    dataGridView2[4, dataGridView2.CurrentCell.RowIndex].Value = txtSv_nganh.Text;
+                    dataGridView2[5, dataGridView2.CurrentCell.RowIndex].Value = txtSv_hedaotao.Text;
+                    dataGridView2[6, dataGridView2.CurrentCell.RowIndex].Value = txtSv_ketqua.Text;
+                    dataGridView2[7, dataGridView2.CurrentCell.RowIndex].Value = txtSv_hinhthuc.Text;
+                    dataGridView2[8, dataGridView2.CurrentCell.RowIndex].Value = txtSv_tinhtrang.Text;
+                    dataGridView2[9, dataGridView2.CurrentCell.RowIndex].Value = txtSv_email.Text;
+                    
+                    dataGridView2.Update();
+                    tcTrungTuyenDetail.TabPages.Remove(tabPageSvDetail);
+                    UpdateEditData?.Invoke(this, EventArgs.Empty);
+                }
+            };
         }
         public string Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string sv_id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -102,6 +113,9 @@ namespace DSTSVido
         public event EventHandler ImportDataEvent;
         public event EventHandler EditData;
         public event EventHandler SaveEvent;
+        public event EventHandler CancelData;
+        public event EventHandler SaveData;
+        public event EventHandler UpdateEditData;
 
         public void SetSinhVienListBindingSource(BindingSource sinhvienList)
         {

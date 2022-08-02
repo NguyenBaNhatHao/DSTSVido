@@ -26,7 +26,7 @@ namespace DSTSVido.Presenters
 
             this.view.ImportDataEvent += ImportData;
             //this.view.SearchStatus += SeerchStatus;
-
+            this.view.UpdateEditData += UpdateData;
             //Set sinhvien blindind source
             this.view.SetSinhVienListBindingSource(sinhvienbindingSource);
             //Load sinhvien
@@ -108,7 +108,6 @@ namespace DSTSVido.Presenters
                             model.sv_hinhthuc = row.Cells.ToArray()[7].Value.ToString();
                             model.sv_tinhtrang = row.Cells.ToArray()[8].Value.ToString();
                             model.sv_ketqua = row.Cells.ToArray()[9].Value.ToString();
-                            model.sv_email = row.Cells.ToArray()[10].Value.ToString();
                             //bug in here
                             reposity.InsertData(model);
                         }
@@ -123,6 +122,10 @@ namespace DSTSVido.Presenters
         {
             SinhvienList = JsonConvert.DeserializeObject<IEnumerable<Sinhvien>>(reposity.GetAll().Result);
             sinhvienbindingSource.DataSource = SinhvienList;
+        }
+        private void UpdateData(object sender, EventArgs e)
+        {
+            
         }
     }
 }
