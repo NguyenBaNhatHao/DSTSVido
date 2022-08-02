@@ -109,11 +109,16 @@ namespace DSTSVido.Presenters
                             model.sv_tinhtrang = row.Cells.ToArray()[8].Value.ToString();
                             model.sv_ketqua = row.Cells.ToArray()[9].Value.ToString();
                             //bug in here
+                            if (String.IsNullOrEmpty(model.sv_id))
+                            {
+                                MessageBox.Show(String.Format("Import {0} rows", row));
+                                LoadAllTrungTuyenList();
+                                return;
+                            }
                             reposity.InsertData(model);
                         }
                         //Do something with rows
                         Console.WriteLine(string.Format("Worksheet Rows:{0}", rows.Count()));
-                        LoadAllTrungTuyenList();
                     }
                 }
             }
