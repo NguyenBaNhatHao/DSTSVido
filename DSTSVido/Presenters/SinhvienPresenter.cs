@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DSTSVido.Models;
 using DSTSVido.Views;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using System.IO;
 
 namespace DSTSVido.Presenters
@@ -120,7 +121,7 @@ namespace DSTSVido.Presenters
         }
         private void LoadAllTrungTuyenList()
         {
-            SinhvienList = reposity.GetAll();
+            SinhvienList = JsonConvert.DeserializeObject<IEnumerable<Sinhvien>>(reposity.GetAll().Result);
             sinhvienbindingSource.DataSource = SinhvienList;
         }
     }
