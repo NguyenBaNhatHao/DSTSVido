@@ -125,7 +125,7 @@ namespace DSTSVido.Presenters
         }
         private void UpdateData(object sender, EventArgs e)
         {
-            
+            MessageBox.Show(DialogResult.OK.ToString());
         }
     }
 }
