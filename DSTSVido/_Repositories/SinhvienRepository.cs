@@ -53,7 +53,7 @@ namespace DSTSVido._Repositories
                         sinhvienModel.sv_ketqua = reader[6].ToString();
                         sinhvienModel.sv_hinhthuc = reader[7].ToString();
                         sinhvienModel.sv_tinhtrang = reader[8].ToString();
-                        sinhvienModel.sv_mail = reader[9].ToString();
+                        sinhvienModel.sv_email = reader[9].ToString();
                         trungtuyenList.Add(sinhvienModel);
                     }
                 }
