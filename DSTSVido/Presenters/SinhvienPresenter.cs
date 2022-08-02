@@ -95,7 +95,6 @@ namespace DSTSVido.Presenters
                                 cells.Add(cell.ColumnNumber);
                             }
                         }
-                        rows.RemoveAt(0);
                         foreach (var row in rows)
                         {
                             Sinhvien model = new Sinhvien();
@@ -112,6 +111,7 @@ namespace DSTSVido.Presenters
                         }
                         //Do something with rows
                         Console.WriteLine(string.Format("Worksheet Rows:{0}", rows.Count()));
+                        LoadAllTrungTuyenList();
                     }
                 }
             }

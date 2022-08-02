@@ -10,6 +10,6 @@ namespace DSTSVido.Models
     public interface ISinhvienReposity
     {
         IEnumerable<Sinhvien> GetAll();
-        void InsertData(Sinhvien model);
+        Task<string> InsertData(Sinhvien model);
     }
 }

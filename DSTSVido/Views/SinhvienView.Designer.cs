@@ -49,10 +49,9 @@
             this.tabPageSvTrungTuyen.Controls.Add(this.btnSreachTT);
             this.tabPageSvTrungTuyen.Controls.Add(this.txtSearchTT);
             this.tabPageSvTrungTuyen.Controls.Add(this.label13);
-            this.tabPageSvTrungTuyen.Location = new System.Drawing.Point(4, 38);
-            this.tabPageSvTrungTuyen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPageSvTrungTuyen.Location = new System.Drawing.Point(4, 29);
             this.tabPageSvTrungTuyen.Name = "tabPageSvTrungTuyen";
-            this.tabPageSvTrungTuyen.Size = new System.Drawing.Size(1740, 743);
+            this.tabPageSvTrungTuyen.Size = new System.Drawing.Size(905, 454);
             this.tabPageSvTrungTuyen.TabIndex = 2;
             this.tabPageSvTrungTuyen.Text = "Data Xet Tuyen";
             this.tabPageSvTrungTuyen.UseVisualStyleBackColor = true;
@@ -60,10 +59,9 @@
             // btnEditData
             // 
             this.btnEditData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditData.Location = new System.Drawing.Point(1547, 192);
-            this.btnEditData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEditData.Location = new System.Drawing.Point(779, 125);
             this.btnEditData.Name = "btnEditData";
-            this.btnEditData.Size = new System.Drawing.Size(159, 49);
+            this.btnEditData.Size = new System.Drawing.Size(106, 32);
             this.btnEditData.TabIndex = 8;
             this.btnEditData.Text = "Edit";
             this.btnEditData.UseVisualStyleBackColor = true;
@@ -71,10 +69,9 @@
             // btnImportData
             // 
             this.btnImportData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImportData.Location = new System.Drawing.Point(1547, 133);
-            this.btnImportData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImportData.Location = new System.Drawing.Point(779, 86);
             this.btnImportData.Name = "btnImportData";
-            this.btnImportData.Size = new System.Drawing.Size(159, 49);
+            this.btnImportData.Size = new System.Drawing.Size(106, 32);
             this.btnImportData.TabIndex = 8;
             this.btnImportData.Text = "ImportData";
             this.btnImportData.UseVisualStyleBackColor = true;
@@ -86,40 +83,36 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(63, 125);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView2.Location = new System.Drawing.Point(42, 81);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(1461, 577);
+            this.dataGridView2.Size = new System.Drawing.Size(722, 352);
             this.dataGridView2.TabIndex = 5;
             // 
             // btnSreachTT
             // 
             this.btnSreachTT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSreachTT.Location = new System.Drawing.Point(335, 48);
-            this.btnSreachTT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSreachTT.Location = new System.Drawing.Point(229, 33);
             this.btnSreachTT.Name = "btnSreachTT";
-            this.btnSreachTT.Size = new System.Drawing.Size(158, 49);
+            this.btnSreachTT.Size = new System.Drawing.Size(105, 32);
             this.btnSreachTT.TabIndex = 4;
             this.btnSreachTT.Text = "Search";
             this.btnSreachTT.UseVisualStyleBackColor = true;
             // 
             // txtSearchTT
             // 
-            this.txtSearchTT.Location = new System.Drawing.Point(63, 55);
-            this.txtSearchTT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSearchTT.Location = new System.Drawing.Point(42, 36);
             this.txtSearchTT.Name = "txtSearchTT";
-            this.txtSearchTT.Size = new System.Drawing.Size(264, 35);
+            this.txtSearchTT.Size = new System.Drawing.Size(177, 26);
             this.txtSearchTT.TabIndex = 2;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(57, 20);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(38, 13);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(89, 29);
+            this.label13.Size = new System.Drawing.Size(60, 20);
             this.label13.TabIndex = 1;
             this.label13.Text = "Search";
             // 
@@ -129,18 +122,18 @@
             this.tcTrungTuyenDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcTrungTuyenDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcTrungTuyenDetail.Location = new System.Drawing.Point(0, 0);
-            this.tcTrungTuyenDetail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tcTrungTuyenDetail.Name = "tcTrungTuyenDetail";
             this.tcTrungTuyenDetail.SelectedIndex = 0;
-            this.tcTrungTuyenDetail.Size = new System.Drawing.Size(1748, 785);
+            this.tcTrungTuyenDetail.Size = new System.Drawing.Size(913, 487);
             this.tcTrungTuyenDetail.TabIndex = 3;
             // 
             // SinhvienView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1748, 785);
+            this.ClientSize = new System.Drawing.Size(913, 487);
             this.Controls.Add(this.tcTrungTuyenDetail);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SinhvienView";
             this.Text = "Form1";
             this.tabPageSvTrungTuyen.ResumeLayout(false);
