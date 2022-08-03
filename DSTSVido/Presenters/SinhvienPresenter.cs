@@ -97,6 +97,7 @@ namespace DSTSVido.Presenters
                             }
                         }
                         rows.RemoveAt(0);
+                        int count = 0;
                         foreach (var row in rows)
                         {
                             Sinhvien model = new Sinhvien();
@@ -109,14 +110,16 @@ namespace DSTSVido.Presenters
                             model.sv_tinhtrang = row.Cells.ToArray()[8].Value.ToString();
                             model.sv_ketqua = row.Cells.ToArray()[9].Value.ToString();
                             //bug in here
-                            if (String.IsNullOrEmpty(model.sv_id))
+                            if (String.IsNullOrWhiteSpace(model.sv_id))
                             {
-                                MessageBox.Show(String.Format("Import {0} rows", rows.Count()));
+                                MessageBox.Show(String.Format("Import {0} rows", count));
                                 return;
                             }
                             reposity.InsertData(model);
-                            LoadAllTrungTuyenList();
+                            count++;
                         }
+                        MessageBox.Show(String.Format("Import {0} rows", count));
+                        LoadAllTrungTuyenList();
                         //Do something with rows
                         Console.WriteLine(string.Format("Worksheet Rows:{0}", rows.Count()));
                     }

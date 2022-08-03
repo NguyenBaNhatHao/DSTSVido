@@ -17,7 +17,7 @@ namespace DSTSVido._Repositories
         public async Task<string> GetAll()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync("https://admintt.viendong.edu.vn/api/sinhvien").GetAwaiter().GetResult();
+            HttpResponseMessage httpResponse = client.GetAsync("https://localhost:7070/api/sinhvien").GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -29,7 +29,7 @@ namespace DSTSVido._Repositories
             HttpClient client = new HttpClient();
             string sinhvien = JsonConvert.SerializeObject(model);
             HttpContent c = new StringContent(sinhvien, Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponse = client.PostAsync("https://admintt.viendong.edu.vn/api/sinhvien", c).GetAwaiter().GetResult(); 
+            HttpResponseMessage httpResponse = client.PostAsync("https://localhost:7070/api/sinhvien", c).GetAwaiter().GetResult(); 
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -40,7 +40,7 @@ namespace DSTSVido._Repositories
             HttpClient client = new HttpClient();
             string sinhvien = JsonConvert.SerializeObject(model);
             HttpContent c = new StringContent(sinhvien, Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponse = client.PutAsync("https://admintt.viendong.edu.vn/api/sinhvien/" + model.id, c).GetAwaiter().GetResult(); //check doi link api
+            HttpResponseMessage httpResponse = client.PutAsync("https://localhost:7070/api/sinhvien/" + model.id, c).GetAwaiter().GetResult(); //check doi link api
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
