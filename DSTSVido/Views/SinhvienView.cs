@@ -1,4 +1,6 @@
 ﻿using DSTSVido.Views;
+using DSTSVido.Models;
+using DSTSVido._Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -86,7 +88,19 @@ namespace DSTSVido
                     dataGridView2[7, dataGridView2.CurrentCell.RowIndex].Value = txtSv_hinhthuc.Text;
                     dataGridView2[8, dataGridView2.CurrentCell.RowIndex].Value = txtSv_tinhtrang.Text;
                     dataGridView2[9, dataGridView2.CurrentCell.RowIndex].Value = txtSv_email.Text;
-                    
+                    Sinhvien model = new Sinhvien();
+                    model.id = (int)dataGridView2[0, dataGridView2.CurrentCell.RowIndex].Value;
+                    model.sv_id = txtSv_id.Text;
+                    model.sv_name = txtSv_name.Text;
+                    model.sv_ngaysinh = txtSv_ngaysinh.Text;
+                    model.sv_nganh = txtSv_nganh.Text;
+                    model.sv_hedaotao = txtSv_hedaotao.Text;
+                    model.sv_ketqua = txtSv_ketqua.Text;
+                    model.sv_hinhthuc = txtSv_hinhthuc.Text;
+                    model.sv_tinhtrang = txtSv_tinhtrang.Text;
+                    model.sv_email = txtSv_email.Text;
+                    SinhvienRepository repository = new SinhvienRepository();
+                    repository.UpdateData(model);
                     dataGridView2.Update();
                     tcTrungTuyenDetail.TabPages.Remove(tabPageSvDetail);
                     UpdateEditData?.Invoke(this, EventArgs.Empty);

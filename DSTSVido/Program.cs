@@ -21,9 +21,9 @@ namespace DSTSVido
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
+            
             ISinhvienView svview = new SinhvienView();
-            ISinhvienReposity t = new SinhvienRepository(sqlConnectionString);
+            ISinhvienReposity t = new SinhvienRepository();
             new SinhvienPresenter(svview, t);
 
             Application.Run((Form)svview);

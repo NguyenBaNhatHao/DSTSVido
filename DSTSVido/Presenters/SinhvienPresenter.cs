@@ -111,11 +111,11 @@ namespace DSTSVido.Presenters
                             //bug in here
                             if (String.IsNullOrEmpty(model.sv_id))
                             {
-                                MessageBox.Show(String.Format("Import {0} rows", row));
-                                LoadAllTrungTuyenList();
+                                MessageBox.Show(String.Format("Import {0} rows", rows.Count()));
                                 return;
                             }
                             reposity.InsertData(model);
+                            LoadAllTrungTuyenList();
                         }
                         //Do something with rows
                         Console.WriteLine(string.Format("Worksheet Rows:{0}", rows.Count()));
@@ -130,6 +130,7 @@ namespace DSTSVido.Presenters
         }
         private void UpdateData(object sender, EventArgs e)
         {
+            
             MessageBox.Show(DialogResult.OK.ToString());
         }
     }

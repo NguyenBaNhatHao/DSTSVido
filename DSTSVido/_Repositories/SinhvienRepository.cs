@@ -13,10 +13,6 @@ namespace DSTSVido._Repositories
 {
     public class SinhvienRepository : BaseRepository, ISinhvienReposity
     {
-        public SinhvienRepository(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
 
         public async Task<string> GetAll()
         {
@@ -44,7 +40,7 @@ namespace DSTSVido._Repositories
             HttpClient client = new HttpClient();
             string sinhvien = JsonConvert.SerializeObject(model);
             HttpContent c = new StringContent(sinhvien, Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponse = client.PutAsync("https://localhost:7070/api/sinhvien/"+model.id, c).GetAwaiter().GetResult(); //check doi link api
+            HttpResponseMessage httpResponse = client.PutAsync("https://admintt.viendong.edu.vn/api/sinhvien/" + model.id, c).GetAwaiter().GetResult(); //check doi link api
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
