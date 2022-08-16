@@ -24,8 +24,12 @@ namespace DSTSVido
         private void AssociateAndRaiseViewEvents()
         {
             //SearchSV
-            //btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
-            
+            btnSearchdd.Click += delegate { Searchdd?.Invoke(this, EventArgs.Empty); };
+            btnSearchdd.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                    Searchdd?.Invoke(this, EventArgs.Empty);
+            };
             btnImportData.Click += delegate { ImportDataEvent?.Invoke(this, EventArgs.Empty); };
             //txtSearch.KeyDown += (s, e) =>
             //{
@@ -120,7 +124,21 @@ namespace DSTSVido
         public string SearchValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string ImageName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string ImageTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
+        public string Lop
+        {
+            get { return (string)cboxlop.SelectedItem; }
+            set { cboxlop.SelectedItem = value; }
+        }
+        public string Monhoc
+        {
+            get { return (string)cboxmonhoc.SelectedItem; }
+            set { cboxmonhoc.SelectedItem = value; }
+        }
+        public string Nguoitao
+        {
+            get { return (string)cboxnguoitao.SelectedItem; }
+            set { cboxnguoitao.SelectedItem = value; }
+        }
         public event EventHandler SearchEvent;
         public event EventHandler SearchEventTT;
         public event EventHandler SendEvent;
@@ -131,10 +149,16 @@ namespace DSTSVido
         public event EventHandler SaveData;
         public event EventHandler UpdateEditData;
         public event EventHandler ExportExcel;
+        public event EventHandler Searchdd;
 
         public void SetSinhVienListBindingSource(BindingSource sinhvienList)
         {
             dataGridView2.DataSource = sinhvienList;
+        }
+
+        public void SetDiemDanhListBindingSource(BindingSource diemdanhlist)
+        {
+            gvDiemdanh.DataSource = diemdanhlist;
         }
     }
 }

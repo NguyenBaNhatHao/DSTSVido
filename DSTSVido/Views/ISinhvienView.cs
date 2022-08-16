@@ -23,6 +23,10 @@ namespace DSTSVido.Views
         string ImageTime { get; set; }
 
         string SearchValue { get; set; }
+        
+        string Lop { get; set; }
+        string Monhoc { get; set; }
+        string Nguoitao { get; set; }
         //bool IsEdit { get; set; }
         //bool IsSucessful { get; set; }
         //string Message { get; set; }
@@ -38,7 +42,9 @@ namespace DSTSVido.Views
         event EventHandler SaveEvent;
         event EventHandler UpdateEditData;
         event EventHandler ExportExcel;
+        event EventHandler Searchdd;
         void SetSinhVienListBindingSource(BindingSource sinhvienList);
+        void SetDiemDanhListBindingSource(BindingSource diemdanhlist);
         /*    void SetTrungTuyenlistBindingSource(BindingSource trungtuyenlist);*/
         void Show();
     }

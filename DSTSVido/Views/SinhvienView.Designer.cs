@@ -58,8 +58,15 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tbDiemdanh = new System.Windows.Forms.TabPage();
-            this.gvDiemdanh = new System.Windows.Forms.DataGridView();
+            this.cboxnguoitao = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboxmonhoc = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cboxlop = new System.Windows.Forms.ComboBox();
             this.btnExportData = new System.Windows.Forms.Button();
+            this.gvDiemdanh = new System.Windows.Forms.DataGridView();
+            this.btnSearchdd = new System.Windows.Forms.Button();
             this.tabPageSvTrungTuyen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tcTrungTuyenDetail.SuspendLayout();
@@ -350,6 +357,13 @@
             // 
             // tbDiemdanh
             // 
+            this.tbDiemdanh.Controls.Add(this.btnSearchdd);
+            this.tbDiemdanh.Controls.Add(this.cboxnguoitao);
+            this.tbDiemdanh.Controls.Add(this.label3);
+            this.tbDiemdanh.Controls.Add(this.cboxmonhoc);
+            this.tbDiemdanh.Controls.Add(this.label1);
+            this.tbDiemdanh.Controls.Add(this.label14);
+            this.tbDiemdanh.Controls.Add(this.cboxlop);
             this.tbDiemdanh.Controls.Add(this.btnExportData);
             this.tbDiemdanh.Controls.Add(this.gvDiemdanh);
             this.tbDiemdanh.Location = new System.Drawing.Point(4, 29);
@@ -359,6 +373,82 @@
             this.tbDiemdanh.TabIndex = 4;
             this.tbDiemdanh.Text = "Diem danh";
             this.tbDiemdanh.UseVisualStyleBackColor = true;
+            // 
+            // cboxnguoitao
+            // 
+            this.cboxnguoitao.FormattingEnabled = true;
+            this.cboxnguoitao.Items.AddRange(new object[] {
+            "ctphu"});
+            this.cboxnguoitao.Location = new System.Drawing.Point(499, 29);
+            this.cboxnguoitao.Margin = new System.Windows.Forms.Padding(2);
+            this.cboxnguoitao.Name = "cboxnguoitao";
+            this.cboxnguoitao.Size = new System.Drawing.Size(114, 28);
+            this.cboxnguoitao.TabIndex = 15;
+            this.cboxnguoitao.Text = "Tất Cả";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(417, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 20);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Người tạo";
+            // 
+            // cboxmonhoc
+            // 
+            this.cboxmonhoc.FormattingEnabled = true;
+            this.cboxmonhoc.Items.AddRange(new object[] {
+            "Anh văn 1"});
+            this.cboxmonhoc.Location = new System.Drawing.Point(284, 29);
+            this.cboxmonhoc.Margin = new System.Windows.Forms.Padding(2);
+            this.cboxmonhoc.Name = "cboxmonhoc";
+            this.cboxmonhoc.Size = new System.Drawing.Size(114, 28);
+            this.cboxmonhoc.TabIndex = 13;
+            this.cboxmonhoc.Text = "Tất Cả";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(209, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Môn học";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(23, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(36, 20);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Lớp";
+            // 
+            // cboxlop
+            // 
+            this.cboxlop.FormattingEnabled = true;
+            this.cboxlop.Items.AddRange(new object[] {
+            "212_2TH104_13THC"});
+            this.cboxlop.Location = new System.Drawing.Point(64, 29);
+            this.cboxlop.Margin = new System.Windows.Forms.Padding(2);
+            this.cboxlop.Name = "cboxlop";
+            this.cboxlop.Size = new System.Drawing.Size(114, 28);
+            this.cboxlop.TabIndex = 10;
+            this.cboxlop.Text = "Tất Cả";
+            // 
+            // btnExportData
+            // 
+            this.btnExportData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportData.Location = new System.Drawing.Point(773, 71);
+            this.btnExportData.Name = "btnExportData";
+            this.btnExportData.Size = new System.Drawing.Size(106, 32);
+            this.btnExportData.TabIndex = 9;
+            this.btnExportData.Text = "ExportData";
+            this.btnExportData.UseVisualStyleBackColor = true;
             // 
             // gvDiemdanh
             // 
@@ -373,15 +463,15 @@
             this.gvDiemdanh.Size = new System.Drawing.Size(722, 352);
             this.gvDiemdanh.TabIndex = 6;
             // 
-            // btnExportData
+            // btnSearchdd
             // 
-            this.btnExportData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportData.Location = new System.Drawing.Point(773, 71);
-            this.btnExportData.Name = "btnExportData";
-            this.btnExportData.Size = new System.Drawing.Size(106, 32);
-            this.btnExportData.TabIndex = 9;
-            this.btnExportData.Text = "ExportData";
-            this.btnExportData.UseVisualStyleBackColor = true;
+            this.btnSearchdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchdd.Location = new System.Drawing.Point(773, 29);
+            this.btnSearchdd.Name = "btnSearchdd";
+            this.btnSearchdd.Size = new System.Drawing.Size(105, 32);
+            this.btnSearchdd.TabIndex = 16;
+            this.btnSearchdd.Text = "Search";
+            this.btnSearchdd.UseVisualStyleBackColor = true;
             // 
             // SinhvienView
             // 
@@ -399,6 +489,7 @@
             this.tabPageSvDetail.ResumeLayout(false);
             this.tabPageSvDetail.PerformLayout();
             this.tbDiemdanh.ResumeLayout(false);
+            this.tbDiemdanh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvDiemdanh)).EndInit();
             this.ResumeLayout(false);
 
@@ -438,6 +529,13 @@
         private System.Windows.Forms.TabPage tbDiemdanh;
         private System.Windows.Forms.DataGridView gvDiemdanh;
         private System.Windows.Forms.Button btnExportData;
+        private System.Windows.Forms.ComboBox cboxnguoitao;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboxmonhoc;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cboxlop;
+        private System.Windows.Forms.Button btnSearchdd;
     }
 }
 
