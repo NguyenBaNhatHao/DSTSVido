@@ -32,7 +32,7 @@ namespace DSTSVido
             //    if (e.KeyCode == Keys.Enter)
             //        SearchEvent?.Invoke(this, EventArgs.Empty);
             //};
-
+            btnExportData.Click += delegate { ExportExcel?.Invoke(this, EventArgs.Empty); };
 
             //SearchTT
             btnSreachTT.Click += delegate { SearchEventTT?.Invoke(this, EventArgs.Empty); };
@@ -130,6 +130,7 @@ namespace DSTSVido
         public event EventHandler CancelData;
         public event EventHandler SaveData;
         public event EventHandler UpdateEditData;
+        public event EventHandler ExportExcel;
 
         public void SetSinhVienListBindingSource(BindingSource sinhvienList)
         {

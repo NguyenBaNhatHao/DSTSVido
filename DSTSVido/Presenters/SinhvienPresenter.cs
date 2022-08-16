@@ -27,6 +27,7 @@ namespace DSTSVido.Presenters
             this.view.ImportDataEvent += ImportData;
             //this.view.SearchStatus += SeerchStatus;
             this.view.UpdateEditData += UpdateData;
+            this.view.ExportExcel += ExportExcel;
             //Set sinhvien blindind source
             this.view.SetSinhVienListBindingSource(sinhvienbindingSource);
             //Load sinhvien
@@ -134,6 +135,11 @@ namespace DSTSVido.Presenters
         private void UpdateData(object sender, EventArgs e)
         {
             
+            MessageBox.Show(DialogResult.OK.ToString());
+        }
+        private void ExportExcel(object sender, EventArgs e)
+        {
+
             MessageBox.Show(DialogResult.OK.ToString());
         }
     }
