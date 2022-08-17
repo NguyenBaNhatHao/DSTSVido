@@ -27,6 +27,7 @@ namespace DSTSVido.Views
         string Lop { get; set; }
         string Monhoc { get; set; }
         string Nguoitao { get; set; }
+        string Khoahoc { get; set; }
         //bool IsEdit { get; set; }
         //bool IsSucessful { get; set; }
         //string Message { get; set; }

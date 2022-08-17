@@ -139,6 +139,11 @@ namespace DSTSVido
             get { return (string)cboxnguoitao.SelectedItem; }
             set { cboxnguoitao.SelectedItem = value; }
         }
+        public string Khoahoc 
+        {
+            get { return (string)cboxKhoahoc.SelectedItem; }
+            set { cboxKhoahoc.SelectedItem = value; }
+        }
         public event EventHandler SearchEvent;
         public event EventHandler SearchEventTT;
         public event EventHandler SendEvent;
@@ -160,5 +165,6 @@ namespace DSTSVido
         {
             gvDiemdanh.DataSource = diemdanhlist;
         }
+
     }
 }

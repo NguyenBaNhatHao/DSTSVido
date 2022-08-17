@@ -10,7 +10,8 @@ namespace DSTSVido.Models
     public interface ISinhvienReposity
     {
         Task<string> GetAll();
-        IEnumerable<Diemdanh> GetByValue(string Lop, string Monhoc, string Nguoitao);
+        IEnumerable<Diemdanh> GetByValue(string Lop, string Monhoc, string Nguoitao, string Khoahoc);
+        Task<string> GetDiemdanhHeader(Diemdanh model);
         Task<string> GetDiemdanh(Diemdanh model);
         Task<string> UpdateData(Sinhvien model);
         Task<string> InsertData(Sinhvien model);

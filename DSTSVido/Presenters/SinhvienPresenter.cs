@@ -48,7 +48,7 @@ namespace DSTSVido.Presenters
         private void SearchDiemdanh(object sender, EventArgs e)
         {
             var diemdanhs = new List<Diemdanh>();
-            diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao)).ToList();
+            diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc)).ToList();
             var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
             DiemdanhList = JsonConvert.DeserializeObject<IEnumerable<Diemdanh>>(dataSearch.Result);
             diemdanhbindingSource.DataSource = DiemdanhList;
@@ -159,9 +159,11 @@ namespace DSTSVido.Presenters
             try
             {
                 var diemdanhs = new List<Diemdanh>();
-                diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao)).ToList();
+                diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc)).ToList();
                 var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
+                var dataHeader = reposity.GetDiemdanhHeader(diemdanhs[0]);
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(dataSearch.Result, typeof(DataTable));
+                DataTable hd = (DataTable)JsonConvert.DeserializeObject(dataHeader.Result, typeof(DataTable));
                 Save_data_table_to_excel(dt);
                 MessageBox.Show(DialogResult.OK.ToString());
             }
@@ -244,13 +246,10 @@ namespace DSTSVido.Presenters
                             }
                         }
                     }
-
-
                     // now resize the columns
                     excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
                     excelCellRange.EntireColumn.AutoFit();
                 }
-
                 //now save the work book and exit the ecel
                 excelworkbook.SaveAs(FilePath);
                 excelworkbook.Close();

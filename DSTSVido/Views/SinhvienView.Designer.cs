@@ -58,6 +58,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tbDiemdanh = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnSearchdd = new System.Windows.Forms.Button();
             this.cboxnguoitao = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cboxmonhoc = new System.Windows.Forms.ComboBox();
@@ -66,7 +68,7 @@
             this.cboxlop = new System.Windows.Forms.ComboBox();
             this.btnExportData = new System.Windows.Forms.Button();
             this.gvDiemdanh = new System.Windows.Forms.DataGridView();
-            this.btnSearchdd = new System.Windows.Forms.Button();
+            this.cboxKhoahoc = new System.Windows.Forms.ComboBox();
             this.tabPageSvTrungTuyen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tcTrungTuyenDetail.SuspendLayout();
@@ -85,7 +87,7 @@
             this.tabPageSvTrungTuyen.Controls.Add(this.label13);
             this.tabPageSvTrungTuyen.Location = new System.Drawing.Point(4, 29);
             this.tabPageSvTrungTuyen.Name = "tabPageSvTrungTuyen";
-            this.tabPageSvTrungTuyen.Size = new System.Drawing.Size(905, 454);
+            this.tabPageSvTrungTuyen.Size = new System.Drawing.Size(956, 481);
             this.tabPageSvTrungTuyen.TabIndex = 2;
             this.tabPageSvTrungTuyen.Text = "Data Xet Tuyen";
             this.tabPageSvTrungTuyen.UseVisualStyleBackColor = true;
@@ -160,7 +162,7 @@
             this.tcTrungTuyenDetail.Location = new System.Drawing.Point(0, 0);
             this.tcTrungTuyenDetail.Name = "tcTrungTuyenDetail";
             this.tcTrungTuyenDetail.SelectedIndex = 0;
-            this.tcTrungTuyenDetail.Size = new System.Drawing.Size(913, 487);
+            this.tcTrungTuyenDetail.Size = new System.Drawing.Size(1012, 514);
             this.tcTrungTuyenDetail.TabIndex = 3;
             // 
             // tabPageSvDetail
@@ -188,7 +190,7 @@
             this.tabPageSvDetail.Location = new System.Drawing.Point(4, 29);
             this.tabPageSvDetail.Name = "tabPageSvDetail";
             this.tabPageSvDetail.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSvDetail.Size = new System.Drawing.Size(905, 454);
+            this.tabPageSvDetail.Size = new System.Drawing.Size(956, 481);
             this.tabPageSvDetail.TabIndex = 3;
             this.tabPageSvDetail.Text = "SVDetail";
             this.tabPageSvDetail.UseVisualStyleBackColor = true;
@@ -357,6 +359,8 @@
             // 
             // tbDiemdanh
             // 
+            this.tbDiemdanh.Controls.Add(this.cboxKhoahoc);
+            this.tbDiemdanh.Controls.Add(this.label4);
             this.tbDiemdanh.Controls.Add(this.btnSearchdd);
             this.tbDiemdanh.Controls.Add(this.cboxnguoitao);
             this.tbDiemdanh.Controls.Add(this.label3);
@@ -369,17 +373,37 @@
             this.tbDiemdanh.Location = new System.Drawing.Point(4, 29);
             this.tbDiemdanh.Name = "tbDiemdanh";
             this.tbDiemdanh.Padding = new System.Windows.Forms.Padding(3);
-            this.tbDiemdanh.Size = new System.Drawing.Size(905, 454);
+            this.tbDiemdanh.Size = new System.Drawing.Size(1004, 481);
             this.tbDiemdanh.TabIndex = 4;
             this.tbDiemdanh.Text = "Diem danh";
             this.tbDiemdanh.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(651, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 20);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Khóa học";
+            // 
+            // btnSearchdd
+            // 
+            this.btnSearchdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchdd.Location = new System.Drawing.Point(872, 71);
+            this.btnSearchdd.Name = "btnSearchdd";
+            this.btnSearchdd.Size = new System.Drawing.Size(105, 32);
+            this.btnSearchdd.TabIndex = 16;
+            this.btnSearchdd.Text = "Search";
+            this.btnSearchdd.UseVisualStyleBackColor = true;
             // 
             // cboxnguoitao
             // 
             this.cboxnguoitao.FormattingEnabled = true;
             this.cboxnguoitao.Items.AddRange(new object[] {
             "ctphu"});
-            this.cboxnguoitao.Location = new System.Drawing.Point(499, 29);
+            this.cboxnguoitao.Location = new System.Drawing.Point(532, 29);
             this.cboxnguoitao.Margin = new System.Windows.Forms.Padding(2);
             this.cboxnguoitao.Name = "cboxnguoitao";
             this.cboxnguoitao.Size = new System.Drawing.Size(114, 28);
@@ -390,7 +414,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(417, 32);
+            this.label3.Location = new System.Drawing.Point(450, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 14;
@@ -401,7 +425,7 @@
             this.cboxmonhoc.FormattingEnabled = true;
             this.cboxmonhoc.Items.AddRange(new object[] {
             "Anh văn 1"});
-            this.cboxmonhoc.Location = new System.Drawing.Point(284, 29);
+            this.cboxmonhoc.Location = new System.Drawing.Point(331, 29);
             this.cboxmonhoc.Margin = new System.Windows.Forms.Padding(2);
             this.cboxmonhoc.Name = "cboxmonhoc";
             this.cboxmonhoc.Size = new System.Drawing.Size(114, 28);
@@ -412,7 +436,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(209, 32);
+            this.label1.Location = new System.Drawing.Point(256, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 20);
             this.label1.TabIndex = 12;
@@ -436,14 +460,14 @@
             this.cboxlop.Location = new System.Drawing.Point(64, 29);
             this.cboxlop.Margin = new System.Windows.Forms.Padding(2);
             this.cboxlop.Name = "cboxlop";
-            this.cboxlop.Size = new System.Drawing.Size(114, 28);
+            this.cboxlop.Size = new System.Drawing.Size(187, 28);
             this.cboxlop.TabIndex = 10;
             this.cboxlop.Text = "Tất Cả";
             // 
             // btnExportData
             // 
             this.btnExportData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportData.Location = new System.Drawing.Point(773, 71);
+            this.btnExportData.Location = new System.Drawing.Point(871, 140);
             this.btnExportData.Name = "btnExportData";
             this.btnExportData.Size = new System.Drawing.Size(106, 32);
             this.btnExportData.TabIndex = 9;
@@ -460,24 +484,26 @@
             this.gvDiemdanh.Location = new System.Drawing.Point(27, 71);
             this.gvDiemdanh.Name = "gvDiemdanh";
             this.gvDiemdanh.RowHeadersWidth = 51;
-            this.gvDiemdanh.Size = new System.Drawing.Size(722, 352);
+            this.gvDiemdanh.Size = new System.Drawing.Size(821, 379);
             this.gvDiemdanh.TabIndex = 6;
             // 
-            // btnSearchdd
+            // cboxKhoahoc
             // 
-            this.btnSearchdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchdd.Location = new System.Drawing.Point(773, 29);
-            this.btnSearchdd.Name = "btnSearchdd";
-            this.btnSearchdd.Size = new System.Drawing.Size(105, 32);
-            this.btnSearchdd.TabIndex = 16;
-            this.btnSearchdd.Text = "Search";
-            this.btnSearchdd.UseVisualStyleBackColor = true;
+            this.cboxKhoahoc.FormattingEnabled = true;
+            this.cboxKhoahoc.Items.AddRange(new object[] {
+            "13"});
+            this.cboxKhoahoc.Location = new System.Drawing.Point(733, 29);
+            this.cboxKhoahoc.Margin = new System.Windows.Forms.Padding(2);
+            this.cboxKhoahoc.Name = "cboxKhoahoc";
+            this.cboxKhoahoc.Size = new System.Drawing.Size(114, 28);
+            this.cboxKhoahoc.TabIndex = 18;
+            this.cboxKhoahoc.Text = "Tất Cả";
             // 
             // SinhvienView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 487);
+            this.ClientSize = new System.Drawing.Size(1012, 514);
             this.Controls.Add(this.tcTrungTuyenDetail);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SinhvienView";
@@ -536,6 +562,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cboxlop;
         private System.Windows.Forms.Button btnSearchdd;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboxKhoahoc;
     }
 }
 

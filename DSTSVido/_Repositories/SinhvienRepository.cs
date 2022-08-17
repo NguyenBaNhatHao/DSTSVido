@@ -38,13 +38,28 @@ namespace DSTSVido._Repositories
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
         }
-        public IEnumerable<Diemdanh> GetByValue(string Lop, string Monhoc, string Nguoitao)
+        public async Task<string> GetDiemdanhHeader(Diemdanh model)
+        {
+            HttpClient client = new HttpClient();
+            DiemdanhHeaderSendDTO diemdanhs = new DiemdanhHeaderSendDTO();
+            diemdanhs.Lop = model.Lop;
+            diemdanhs.Monhoc = model.Monhoc;
+            diemdanhs.KhoaHoc = model.KhoaHoc;
+            string searchDiemdanh = JsonConvert.SerializeObject(diemdanhs);
+            HttpContent c = new StringContent(searchDiemdanh, Encoding.UTF8, "application/json");
+            HttpResponseMessage httpResponse = client.PostAsync("http://localhost:5032/api/diemdanh/header", c).GetAwaiter().GetResult();
+            httpResponse.EnsureSuccessStatusCode();
+            string responseString = await httpResponse.Content.ReadAsStringAsync();
+            return responseString;
+        }
+        public IEnumerable<Diemdanh> GetByValue(string Lop, string Monhoc, string Nguoitao, string Khoahoc)
         {
             var ListData = new List<Diemdanh>();
             var diemdanh = new Diemdanh();
             diemdanh.Lop = Lop.ToString();
             diemdanh.Monhoc = Monhoc.ToString();
             diemdanh.nguoiTao = Nguoitao.ToString();
+            diemdanh.KhoaHoc = Khoahoc.ToString();
             ListData.Add(diemdanh);
             return ListData;
         }
