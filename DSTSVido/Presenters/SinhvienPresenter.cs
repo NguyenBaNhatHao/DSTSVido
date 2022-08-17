@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 using System.IO;
 using Aspose.Cells;
 using Aspose.Cells.Utility;
+using Newtonsoft.Json.Linq;
+using System.Data;
 
 namespace DSTSVido.Presenters
 {
@@ -154,22 +156,121 @@ namespace DSTSVido.Presenters
         }
         private void ExportExcel(object sender, EventArgs e)
         {
-            Workbook workbook = new Workbook();
-            Worksheet worksheet = workbook.Worksheets[0];
+            try
+            {
+                var diemdanhs = new List<Diemdanh>();
+                diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao)).ToList();
+                var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
+                DataTable dt = (DataTable)JsonConvert.DeserializeObject(dataSearch.Result, typeof(DataTable));
+                Save_data_table_to_excel(dt);
+                MessageBox.Show(DialogResult.OK.ToString());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void Save_data_table_to_excel(DataTable dt)
+        {
+            int intHeaderLength = 3;
+            int intColumn = 0;
+            int intRow = 0;
+            string Work_sheet_name = "Diemdanh";
+            string Report_Type = "Details";
+            System.Reflection.Missing Default = System.Reflection.Missing.Value;
 
-            // Read JSON File
-            string jsonInput = File.ReadAllText("Data.json");
+            //create the excel file
+            //string FilePath = @"\\Excel" + DateTime.Now.ToString().Replace(":", "_" + ".xlsx");
 
-            // Set JsonLayoutOptions
-            JsonLayoutOptions options = new JsonLayoutOptions();
-            options.ArrayAsTable = true;
+            string FilePath = @"C:\Users\HoangQuan\source\repos\DSTSVido\DSTSVido\Excel\_file_lopmonhoc_Form_DanhSach_221_2TH225_04CD15THC_04CD15MMC_N2.xls";
 
-            // Import JSON Data
-            JsonUtility.ImportData(jsonInput, worksheet.Cells, 0, 0, options);
+            Microsoft.Office.Interop.Excel.Application excel;
+            Microsoft.Office.Interop.Excel.Workbook excelworkbook;
+            Microsoft.Office.Interop.Excel.Worksheet excelsheet;
+            Microsoft.Office.Interop.Excel.Range excelCellRange;
+            try
+            {
 
-            // Save Excel file
-            workbook.Save("Import-Data-JSON-To-Excel.xlsx");
-            MessageBox.Show(DialogResult.OK.ToString());
+                //start the application
+
+
+                excel = new Microsoft.Office.Interop.Excel.Application();
+                if (excel == null)
+                {
+                    Console.WriteLine("getting null values");
+                }
+
+                //for making excel visiable
+                excel.Visible = false;
+                excel.DisplayAlerts = false;
+
+                // creation a new work book
+                excelworkbook = excel.Workbooks.Add(Type.Missing);
+
+                //excelsheet
+                excelsheet = (Microsoft.Office.Interop.Excel.Worksheet)excelworkbook.ActiveSheet;
+                excelsheet.Name = Work_sheet_name;
+
+                excelsheet.Cells[1, 2] = Report_Type;
+
+                excelsheet.Cells[1, 2] = "Date :" + DateTime.Now.ToShortDateString().ToString();
+
+                // loop through each row and add the value to our sheet
+
+                int rowcount = 2;
+                foreach (DataRow datarow in dt.Rows)
+                {
+                    rowcount += 1;
+
+                    for (int i = 1; i < dt.Columns.Count; i++)
+                    {
+                        // on first iteration we add column header
+                        excelsheet.Cells[2, i] = dt.Columns[i - 1].ColumnName;
+                        excelsheet.Cells.Font.Color = System.Drawing.Color.Black;
+
+                        excelsheet.Cells[rowcount, i] = datarow[i - 1].ToString();
+
+                        // for alternate rows
+                        if (rowcount > 3)
+
+                        {
+                            if (i == dt.Columns.Count)
+                            {
+
+                                if (rowcount % 2 == 0)
+                                {
+                                    excelCellRange = excelsheet.Range[excelsheet.Cells[rowcount, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
+                                }
+                            }
+                        }
+                    }
+
+
+                    // now resize the columns
+                    excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
+                    excelCellRange.EntireColumn.AutoFit();
+                }
+
+                //now save the work book and exit the ecel
+                excelworkbook.SaveAs(FilePath);
+                excelworkbook.Close();
+                excel.Quit();
+                //  }
+                
+
+            }
+            catch (Exception ex)
+
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
+            }
+            finally
+            {
+                excelsheet = null;
+                excelCellRange = null;
+                excelworkbook = null;
+            }
         }
     }
 }
