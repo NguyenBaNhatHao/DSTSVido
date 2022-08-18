@@ -10,7 +10,8 @@ namespace DSTSVido.Models
 {
     public class Diemdanh
     {
-        public string Hoten { get; set; }
+        public string Ho { get; set; }
+        public string Ten { get; set; }
         public string mshv { get; set; }
         public string KhoaHoc { get; set; }
         public string Lop { get; set; }

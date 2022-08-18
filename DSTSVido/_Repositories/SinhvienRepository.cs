@@ -38,7 +38,7 @@ namespace DSTSVido._Repositories
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
         }
-        public async Task<string> GetDiemdanhHeader(Diemdanh model)
+        public async Task<string> GetDiemdanhHeader(DiemdanhHeaderSendDTO model)
         {
             HttpClient client = new HttpClient();
             DiemdanhHeaderSendDTO diemdanhs = new DiemdanhHeaderSendDTO();
@@ -84,6 +84,17 @@ namespace DSTSVido._Repositories
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
+        }
+
+        public IEnumerable<DiemdanhHeaderSendDTO> GetByValueHeader(string Lop, string Monhoc, string Nguoitao, string Khoahoc)
+        {
+            var ListData = new List<DiemdanhHeaderSendDTO>();
+            var diemdanh = new DiemdanhHeaderSendDTO();
+            diemdanh.Lop = Lop.ToString();
+            diemdanh.Monhoc = Monhoc.ToString();
+            diemdanh.KhoaHoc = Khoahoc.ToString();
+            ListData.Add(diemdanh);
+            return ListData;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DSTSVido.Models;
 using DSTSVido.Views;
+using DSTSVido.Dtos;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
@@ -159,25 +160,30 @@ namespace DSTSVido.Presenters
             try
             {
                 var diemdanhs = new List<Diemdanh>();
+                var HeaderDiemdanh = new List<DiemdanhHeaderSendDTO>();
                 diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc)).ToList();
+                HeaderDiemdanh = (reposity.GetByValueHeader(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc)).ToList();
                 var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
-                var dataHeader = reposity.GetDiemdanhHeader(diemdanhs[0]);
+                var dataHeader = reposity.GetDiemdanhHeader(HeaderDiemdanh[0]);
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(dataSearch.Result, typeof(DataTable));
                 DataTable hd = (DataTable)JsonConvert.DeserializeObject(dataHeader.Result, typeof(DataTable));
-                Save_data_table_to_excel(dt);
+                Save_data_table_to_excel(dt, hd);
                 MessageBox.Show(DialogResult.OK.ToString());
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
-        public void Save_data_table_to_excel(DataTable dt)
+        public void Save_data_table_to_excel(DataTable dt, DataTable hd)
         {
+            int soluongngay = dt.Columns.Count - 12;
+            Console.WriteLine(soluongngay);
+
             int intHeaderLength = 3;
             int intColumn = 0;
             int intRow = 0;
-            string Work_sheet_name = "Diemdanh";
+            string Work_sheet_name = "DanhSach";
             string Report_Type = "Details";
             System.Reflection.Missing Default = System.Reflection.Missing.Value;
 
@@ -194,8 +200,6 @@ namespace DSTSVido.Presenters
             {
 
                 //start the application
-
-
                 excel = new Microsoft.Office.Interop.Excel.Application();
                 if (excel == null)
                 {
@@ -207,48 +211,100 @@ namespace DSTSVido.Presenters
                 excel.DisplayAlerts = false;
 
                 // creation a new work book
-                excelworkbook = excel.Workbooks.Add(Type.Missing);
+                excelworkbook = excel.Workbooks.Open(FilePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            Type.Missing, Type.Missing);
 
                 //excelsheet
                 excelsheet = (Microsoft.Office.Interop.Excel.Worksheet)excelworkbook.ActiveSheet;
                 excelsheet.Name = Work_sheet_name;
 
-                excelsheet.Cells[1, 2] = Report_Type;
-
-                excelsheet.Cells[1, 2] = "Date :" + DateTime.Now.ToShortDateString().ToString();
+                //excelsheet.Cells[1, 2] = Report_Type;
 
                 // loop through each row and add the value to our sheet
 
-                int rowcount = 2;
-                foreach (DataRow datarow in dt.Rows)
+                int rowcount = 4;
+                foreach (DataRow datarowHeader in hd.Rows)
                 {
                     rowcount += 1;
 
-                    for (int i = 1; i < dt.Columns.Count; i++)
+                    excelsheet.Cells.Font.Color = System.Drawing.Color.Black;
+                    //khoinganh
+                    excelsheet.Cells[4, 1] = hd.Columns[2].ColumnName+": "+ datarowHeader[2].ToString();
+                    //hedaotao  
+                    excelsheet.Cells[5, 1] = hd.Columns[5].ColumnName + ": " + datarowHeader[5].ToString();
+                    
+                    //monhoc
+                    excelsheet.Cells[6, 1] = hd.Columns[3].ColumnName;
+                    excelsheet.Cells[6, 3] = datarowHeader[3].ToString();
+
+                    //lop
+                    excelsheet.Cells[7, 1] = hd.Columns[1].ColumnName;
+                    excelsheet.Cells[7,3] = datarowHeader[1].ToString();
+
+                    //Tin chi
+                    excelsheet.Cells[6, 6] = hd.Columns[4].ColumnName;
+                    excelsheet.Cells[6, 6] = datarowHeader[4].ToString();
+                    //Khoa
+                    excelsheet.Cells[7, 15] = hd.Columns[0].ColumnName;
+                    excelsheet.Cells[7, 20] = datarowHeader[0].ToString();
+
+                    //Hoc ki
+                    excelsheet.Cells[8, 1] = hd.Columns[6].ColumnName;
+                    excelsheet.Cells[8, 3] = datarowHeader[6].ToString();
+
+                    rowcount = 13;
+                    foreach (DataRow datarow in dt.Rows)
                     {
-                        // on first iteration we add column header
-                        excelsheet.Cells[2, i] = dt.Columns[i - 1].ColumnName;
-                        excelsheet.Cells.Font.Color = System.Drawing.Color.Black;
+                        excelsheet.Cells[rowcount, 3] = datarow[0].ToString();
+                        excelsheet.Cells[rowcount, 2] = datarow[2].ToString();
+                        excelsheet.Cells[rowcount, 4] = datarow[1].ToString();
+                        excelsheet.Cells[rowcount, 5] = datarow[5].ToString();
 
-                        excelsheet.Cells[rowcount, i] = datarow[i - 1].ToString();
+                        rowcount += 1;
+                    }
 
-                        // for alternate rows
-                        if (rowcount > 3)
-
+                    rowcount = 12;
+                    foreach (DataRow datarow in dt.Rows)
+                    {
+                        int k = 12;
+                        for(int i = 12; i < dt.Columns.Count; i++)
                         {
-                            if (i == dt.Columns.Count)
-                            {
-
-                                if (rowcount % 2 == 0)
-                                {
-                                    excelCellRange = excelsheet.Range[excelsheet.Cells[rowcount, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
-                                }
-                            }
+                            excelsheet.Cells[5, i] = hd.Columns[i].ColumnName;
                         }
                     }
+
                     // now resize the columns
-                    excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
+                    excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, hd.Columns.Count]];
                     excelCellRange.EntireColumn.AutoFit();
+
+                    //rowcount = 13;
+                    //foreach (DataRow datarow in dt.Rows)
+                    //{
+                    //    rowcount += 1;
+                    //    for (int i = 1; i < dt.Columns.Count; i++)
+                    //    {
+                    //        // on first iteration we add column header
+                    //        excelsheet.Cells[i, rowcount] = datarow[0].ToString();
+                    //        // for alternate rows
+                    //        //if (rowcount > 14)
+
+                    //        //{
+                    //        //    if (i == dt.Columns.Count)
+                    //        //    {
+
+                    //        //        if (rowcount % 2 == 0)
+                    //        //        {
+                    //        //            excelCellRange = excelsheet.Range[excelsheet.Cells[rowcount, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
+                    //        //        }
+                    //        //    }
+                    //        //}
+                    //    }
+                    //    // now resize the columns
+                    //    excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
+                    //    excelCellRange.EntireColumn.AutoFit();
+                    //}
                 }
                 //now save the work book and exit the ecel
                 excelworkbook.SaveAs(FilePath);
@@ -262,7 +318,7 @@ namespace DSTSVido.Presenters
 
             {
                 Console.WriteLine(ex.Message);
-                Console.ReadKey();
+        
             }
             finally
             {
