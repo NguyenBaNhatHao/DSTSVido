@@ -187,8 +187,8 @@ namespace DSTSVido.Presenters
 
             //create the excel file
             //string FilePath = @"\\Excel" + DateTime.Now.ToString().Replace(":", "_" + ".xlsx");
-
-            string FilePath = @"E:\New folder\_file_lopmonhoc_Form_DanhSach_221_2TH225_04CD15THC_04CD15MMC_N2.xls";
+            
+            string FilePath = @"C:\Users\HoangQuan\source\repos\DSTSVido\DSTSVido\Excel\_file_lopmonhoc_Form_DanhSach_221_2TH225_04CD15THC_04CD15MMC_N2.xls";
 
             Microsoft.Office.Interop.Excel.Application excel;
             Microsoft.Office.Interop.Excel.Workbook excelworkbook;
@@ -218,8 +218,7 @@ namespace DSTSVido.Presenters
                 excelsheet = (Microsoft.Office.Interop.Excel.Worksheet)excelworkbook.ActiveSheet;
                 excelsheet.Name = Work_sheet_name;
 
-                //excelsheet.Cells[1, 2] = Report_Type;
-
+           
                 // loop through each row and add the value to our sheet
 
                 int rowcount = 4;
@@ -242,8 +241,8 @@ namespace DSTSVido.Presenters
                     excelsheet.Cells[7,3] = datarowHeader[1].ToString();
 
                     //Tin chi
-                    excelsheet.Cells[6, 6] = hd.Columns[4].ColumnName;
-                    excelsheet.Cells[6, 6] = datarowHeader[4].ToString();
+                    excelsheet.Cells[6, 16] = hd.Columns[4].ColumnName;
+                    excelsheet.Cells[6, 21] = datarowHeader[4].ToString();
                     //Khoa
                     excelsheet.Cells[7, 16] = hd.Columns[0].ColumnName;
                     excelsheet.Cells[7, 21] = datarowHeader[0].ToString();
@@ -281,37 +280,10 @@ namespace DSTSVido.Presenters
                     // now resize the columns
                     excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, hd.Columns.Count]];
                     excelCellRange.EntireColumn.AutoFit();
-
-                    //rowcount = 13;
-                    //foreach (DataRow datarow in dt.Rows)
-                    //{
-                    //    rowcount += 1;
-                    //    for (int i = 1; i < dt.Columns.Count; i++)
-                    //    {
-                    //        // on first iteration we add column header
-                    //        excelsheet.Cells[i, rowcount] = datarow[0].ToString();
-                    //        // for alternate rows
-                    //        //if (rowcount > 14)
-
-                    //        //{
-                    //        //    if (i == dt.Columns.Count)
-                    //        //    {
-
-                    //        //        if (rowcount % 2 == 0)
-                    //        //        {
-                    //        //            excelCellRange = excelsheet.Range[excelsheet.Cells[rowcount, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
-                    //        //        }
-                    //        //    }
-                    //        //}
-                    //    }
-                    //    // now resize the columns
-                    //    excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, dt.Columns.Count]];
-                    //    excelCellRange.EntireColumn.AutoFit();
-                    //}
                 }
                 //now save the work book and exit the ecel
                 excelworkbook.SaveAs(FilePath);
-                excelworkbook.Close(true);
+                excelworkbook.Close(true,FilePath);
                 excel.Quit();
                 //  }
                 MessageBox.Show(DialogResult.OK.ToString());
