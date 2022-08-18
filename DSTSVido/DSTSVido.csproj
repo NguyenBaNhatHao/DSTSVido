@@ -211,7 +211,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Excel\File_diem_danh.xls" />
     <None Include="Excel\_file_lopmonhoc_Form_DanhSach_221_2TH225_04CD15THC_04CD15MMC_N2.xls" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

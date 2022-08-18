@@ -14,6 +14,7 @@ using Aspose.Cells.Utility;
 using Newtonsoft.Json.Linq;
 using System.Data;
 
+
 namespace DSTSVido.Presenters
 {
     public class SinhvienPresenter
@@ -168,7 +169,7 @@ namespace DSTSVido.Presenters
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(dataSearch.Result, typeof(DataTable));
                 DataTable hd = (DataTable)JsonConvert.DeserializeObject(dataHeader.Result, typeof(DataTable));
                 Save_data_table_to_excel(dt, hd);
-                MessageBox.Show(DialogResult.OK.ToString());
+                
             }
             catch(Exception ex)
             {
@@ -177,9 +178,6 @@ namespace DSTSVido.Presenters
         }
         public void Save_data_table_to_excel(DataTable dt, DataTable hd)
         {
-            int soluongngay = dt.Columns.Count - 12;
-            Console.WriteLine(soluongngay);
-
             int intHeaderLength = 3;
             int intColumn = 0;
             int intRow = 0;
@@ -190,7 +188,7 @@ namespace DSTSVido.Presenters
             //create the excel file
             //string FilePath = @"\\Excel" + DateTime.Now.ToString().Replace(":", "_" + ".xlsx");
 
-            string FilePath = @"C:\Users\HoangQuan\source\repos\DSTSVido\DSTSVido\Excel\_file_lopmonhoc_Form_DanhSach_221_2TH225_04CD15THC_04CD15MMC_N2.xls";
+            string FilePath = @"E:\New folder\_file_lopmonhoc_Form_DanhSach_221_2TH225_04CD15THC_04CD15MMC_N2.xls";
 
             Microsoft.Office.Interop.Excel.Application excel;
             Microsoft.Office.Interop.Excel.Workbook excelworkbook;
@@ -211,9 +209,9 @@ namespace DSTSVido.Presenters
                 excel.DisplayAlerts = false;
 
                 // creation a new work book
-                excelworkbook = excel.Workbooks.Open(FilePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                excelworkbook = excel.Workbooks.Open(FilePath, Type.Missing, false, Type.Missing, Type.Missing,
+            Type.Missing, true, Type.Missing, Type.Missing,
+            true, Type.Missing, Type.Missing, Type.Missing,
             Type.Missing, Type.Missing);
 
                 //excelsheet
@@ -247,8 +245,8 @@ namespace DSTSVido.Presenters
                     excelsheet.Cells[6, 6] = hd.Columns[4].ColumnName;
                     excelsheet.Cells[6, 6] = datarowHeader[4].ToString();
                     //Khoa
-                    excelsheet.Cells[7, 15] = hd.Columns[0].ColumnName;
-                    excelsheet.Cells[7, 20] = datarowHeader[0].ToString();
+                    excelsheet.Cells[7, 16] = hd.Columns[0].ColumnName;
+                    excelsheet.Cells[7, 21] = datarowHeader[0].ToString();
 
                     //Hoc ki
                     excelsheet.Cells[8, 1] = hd.Columns[6].ColumnName;
@@ -266,13 +264,18 @@ namespace DSTSVido.Presenters
                     }
 
                     rowcount = 12;
+                    int row = 13;
+                    for (int i =12; i<dt.Columns.Count; i++)
+                    {
+                        excelsheet.Cells[rowcount, i-6] = dt.Columns[i].ColumnName;
+                    }
                     foreach (DataRow datarow in dt.Rows)
                     {
-                        int k = 12;
-                        for(int i = 12; i < dt.Columns.Count; i++)
+                        for(int col = 12; col < dt.Columns.Count; col++)
                         {
-                            excelsheet.Cells[5, i] = hd.Columns[i].ColumnName;
+                            excelsheet.Cells[row, col - 6] = datarow[col].ToString();
                         }
+                        row++;
                     }
 
                     // now resize the columns
@@ -308,16 +311,16 @@ namespace DSTSVido.Presenters
                 }
                 //now save the work book and exit the ecel
                 excelworkbook.SaveAs(FilePath);
-                excelworkbook.Close();
+                excelworkbook.Close(true);
                 excel.Quit();
                 //  }
-                
+                MessageBox.Show(DialogResult.OK.ToString());
 
             }
             catch (Exception ex)
-
             {
-                Console.WriteLine(ex.Message);
+
+                MessageBox.Show(ex.Message);
         
             }
             finally
