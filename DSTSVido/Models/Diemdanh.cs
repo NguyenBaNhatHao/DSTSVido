@@ -16,7 +16,6 @@ namespace DSTSVido.Models
         public string KhoaHoc { get; set; }
         public string Lop { get; set; }
         public string Ngaysinh { get; set; }
-        public string Khoinganh { get; set; }
         public string Monhoc { get; set; }
         public string SoTinchi { get; set; }
         public string Hedaotao { get; set; }

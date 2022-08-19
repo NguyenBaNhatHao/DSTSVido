@@ -12,7 +12,6 @@ namespace DSTSVido.Dtos
         public string Ngaysinh { get; set; }
         public string Ngaydiemdanh { get; set; }
         public string mshv { get; set; }
-        public string Khoinganh { get; set; }
         public string he { get; set; }
         public string Monhoc { get; set; }
         public string Lop { get; set; }

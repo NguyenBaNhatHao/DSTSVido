@@ -182,7 +182,10 @@
   <ItemGroup>
     <Compile Include="Dtos\DiemdanhHeaderReadDTO.cs" />
     <Compile Include="Dtos\DiemdanhHeaderSendDTO.cs" />
+    <Compile Include="Dtos\DiemdanhKhoahocDTO.cs" />
     <Compile Include="Dtos\DiemdanhLopDTO.cs" />
+    <Compile Include="Dtos\DiemdanhMonhocDTO.cs" />
+    <Compile Include="Dtos\DiemdanhNguoitao.cs" />
     <Compile Include="Dtos\DiemdanhReadDTO.cs" />
     <Compile Include="Dtos\DiemdanhsendDTO.cs" />
     <Compile Include="Models\Diemdanh.cs" />

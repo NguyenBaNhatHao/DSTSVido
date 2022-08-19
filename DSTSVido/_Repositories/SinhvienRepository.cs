@@ -52,14 +52,14 @@ namespace DSTSVido._Repositories
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
         }
-        public IEnumerable<Diemdanh> GetByValue(string Lop, string Monhoc, string Nguoitao, string Khoahoc)
+        public IEnumerable<Diemdanh> GetByValue(string Lop, string Monhoc, string Nguoitao)
         {
             var ListData = new List<Diemdanh>();
             var diemdanh = new Diemdanh();
             diemdanh.Lop = Lop.ToString();
             diemdanh.Monhoc = Monhoc.ToString();
             diemdanh.nguoiTao = Nguoitao.ToString();
-            diemdanh.KhoaHoc = Khoahoc.ToString();
+            
             ListData.Add(diemdanh);
             return ListData;
         }
@@ -101,6 +101,31 @@ namespace DSTSVido._Repositories
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/lop").GetAwaiter().GetResult();
+            httpResponse.EnsureSuccessStatusCode();
+            string responseString = await httpResponse.Content.ReadAsStringAsync();
+            return responseString;
+        }
+        public async Task<string> GetApicboxMonhoc()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/monhoc").GetAwaiter().GetResult();
+            httpResponse.EnsureSuccessStatusCode();
+            string responseString = await httpResponse.Content.ReadAsStringAsync();
+            return responseString;
+        }
+        public async Task<string> GetApicboxNguoitao()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/nguoitao").GetAwaiter().GetResult();
+            httpResponse.EnsureSuccessStatusCode();
+            string responseString = await httpResponse.Content.ReadAsStringAsync();
+            return responseString;
+        }
+
+        public async Task<string> GetApicboxKhoahoc()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/khoahoc").GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;

@@ -50,11 +50,19 @@ namespace DSTSVido.Presenters
         }
         private void SearchDiemdanh(object sender, EventArgs e)
         {
-            var diemdanhs = new List<Diemdanh>();
-            diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc)).ToList();
-            var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
-            DiemdanhList = JsonConvert.DeserializeObject<IEnumerable<Diemdanh>>(dataSearch.Result);
-            diemdanhbindingSource.DataSource = DiemdanhList;
+            try
+            {
+                var diemdanhs = new List<Diemdanh>();
+                diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao)).ToList();
+                var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
+                DiemdanhList = JsonConvert.DeserializeObject<IEnumerable<Diemdanh>>(dataSearch.Result);
+                diemdanhbindingSource.DataSource = DiemdanhList;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         private void ImportData(object sender, EventArgs e)
         {
@@ -159,7 +167,7 @@ namespace DSTSVido.Presenters
         }
         private void Dropdowncblop(object sender, EventArgs e)
         {
-            reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc);
+            reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao);
         }
         private void ExportExcel(object sender, EventArgs e)
         {
@@ -167,7 +175,7 @@ namespace DSTSVido.Presenters
             {
                 var diemdanhs = new List<Diemdanh>();
                 var HeaderDiemdanh = new List<DiemdanhHeaderSendDTO>();
-                diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc)).ToList();
+                diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao)).ToList();
                 HeaderDiemdanh = (reposity.GetByValueHeader(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc)).ToList();
                 var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
                 var dataHeader = reposity.GetDiemdanhHeader(HeaderDiemdanh[0]);
