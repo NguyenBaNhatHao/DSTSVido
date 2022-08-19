@@ -1,4 +1,8 @@
-﻿namespace DSTSVido
+﻿using DSTSVido._Repositories;
+using DSTSVido.Dtos;
+using Newtonsoft.Json;
+
+namespace DSTSVido
 {
     partial class SinhvienView
     {
@@ -452,11 +456,19 @@
             this.label14.TabIndex = 11;
             this.label14.Text = "Lớp";
             // 
-            // cboxlop
+            // cboxlop 
+            //basic value "212_2TH104_13THC";
             // 
             this.cboxlop.FormattingEnabled = true;
-            this.cboxlop.Items.AddRange(new object[] {
-            "212_2TH104_13THC"});
+            //SinhvienRepository repository = new SinhvienRepository();
+            //var ItemLop = repository.GetApicboxLop().Result;
+            //DiemdanhLopDTO[] jsondata = JsonConvert.DeserializeObject<DiemdanhLopDTO[]>(ItemLop);
+            //for (int i = 0; i < jsondata.Length; i++)
+            //{
+            //    this.cboxlop.Items.AddRange(new object[] {
+            //jsondata[i].ma});
+            //}
+
             this.cboxlop.Location = new System.Drawing.Point(64, 29);
             this.cboxlop.Margin = new System.Windows.Forms.Padding(2);
             this.cboxlop.Name = "cboxlop";

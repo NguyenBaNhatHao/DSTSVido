@@ -44,6 +44,7 @@ namespace DSTSVido.Views
         event EventHandler UpdateEditData;
         event EventHandler ExportExcel;
         event EventHandler Searchdd;
+        event EventHandler Dropdowncblop;
         void SetSinhVienListBindingSource(BindingSource sinhvienList);
         void SetDiemDanhListBindingSource(BindingSource diemdanhlist);
         /*    void SetTrungTuyenlistBindingSource(BindingSource trungtuyenlist);*/

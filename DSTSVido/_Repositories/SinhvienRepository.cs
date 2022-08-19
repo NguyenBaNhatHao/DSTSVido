@@ -96,5 +96,14 @@ namespace DSTSVido._Repositories
             ListData.Add(diemdanh);
             return ListData;
         }
+
+        public async Task<string> GetApicboxLop()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/lop").GetAwaiter().GetResult();
+            httpResponse.EnsureSuccessStatusCode();
+            string responseString = await httpResponse.Content.ReadAsStringAsync();
+            return responseString;
+        }
     }
 }

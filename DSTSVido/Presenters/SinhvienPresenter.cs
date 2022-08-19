@@ -38,6 +38,7 @@ namespace DSTSVido.Presenters
             this.view.UpdateEditData += UpdateData;
             this.view.ExportExcel += ExportExcel;
             this.view.Searchdd += SearchDiemdanh;
+            this.view.Dropdowncblop += Dropdowncblop;
             //Set sinhvien blindind source
             this.view.SetSinhVienListBindingSource(sinhvienbindingSource);
             this.view.SetDiemDanhListBindingSource(diemdanhbindingSource);
@@ -156,6 +157,10 @@ namespace DSTSVido.Presenters
             
             MessageBox.Show(DialogResult.OK.ToString());
         }
+        private void Dropdowncblop(object sender, EventArgs e)
+        {
+            reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc);
+        }
         private void ExportExcel(object sender, EventArgs e)
         {
             try
@@ -187,8 +192,8 @@ namespace DSTSVido.Presenters
 
             //create the excel file
             //string FilePath = @"\\Excel" + DateTime.Now.ToString().Replace(":", "_" + ".xlsx");
-            
-            string FilePath = @"C:\Users\HoangQuan\source\repos\DSTSVido\DSTSVido\Excel\_file_lopmonhoc_Form_DanhSach_221_2TH225_04CD15THC_04CD15MMC_N2.xls";
+            string FolderExcel = Application.StartupPath + @"\Excel";
+            string FilePath = FolderExcel + @"\FormDiemdanh.xls";
 
             Microsoft.Office.Interop.Excel.Application excel;
             Microsoft.Office.Interop.Excel.Workbook excelworkbook;
@@ -282,7 +287,7 @@ namespace DSTSVido.Presenters
                     excelCellRange.EntireColumn.AutoFit();
                 }
                 //now save the work book and exit the ecel
-                excelworkbook.SaveAs(FilePath);
+                excelworkbook.SaveAs(FolderExcel+@"\"+this.view.Lop+@".xls");
                 excelworkbook.Close(true,FilePath);
                 excel.Quit();
                 //  }

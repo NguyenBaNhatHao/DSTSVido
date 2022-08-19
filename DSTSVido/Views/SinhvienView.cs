@@ -1,6 +1,7 @@
 ﻿using DSTSVido.Views;
 using DSTSVido.Models;
 using DSTSVido._Repositories;
+using DSTSVido.Dtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace DSTSVido
 {
@@ -37,7 +39,16 @@ namespace DSTSVido
             //        SearchEvent?.Invoke(this, EventArgs.Empty);
             //};
             btnExportData.Click += delegate { ExportExcel?.Invoke(this, EventArgs.Empty); };
-
+            cboxlop.DropDown += (s, e) =>
+            {
+                SinhvienRepository repository = new SinhvienRepository();
+                var ItemLop = repository.GetApicboxLop().Result;
+                DiemdanhLopDTO[] jsondata = JsonConvert.DeserializeObject<DiemdanhLopDTO[]>(ItemLop);
+                for (int i = 0; i < jsondata.Length; i++)
+                {
+                    cboxlop.Items.Add(jsondata[i].ma);
+                }
+            };
             //SearchTT
             btnSreachTT.Click += delegate { SearchEventTT?.Invoke(this, EventArgs.Empty); };
             //btnSreachTT.Click += delegate{SearchStatus?.Invoke(this, EventArgs.Empty);};
@@ -155,6 +166,7 @@ namespace DSTSVido
         public event EventHandler UpdateEditData;
         public event EventHandler ExportExcel;
         public event EventHandler Searchdd;
+        public event EventHandler Dropdowncblop;
 
         public void SetSinhVienListBindingSource(BindingSource sinhvienList)
         {
