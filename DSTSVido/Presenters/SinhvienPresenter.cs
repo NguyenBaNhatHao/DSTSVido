@@ -263,6 +263,8 @@ namespace DSTSVido.Presenters
                     //Hoc ki
                     excelsheet.Cells[8, 1] = hd.Columns[6].ColumnName;
                     excelsheet.Cells[8, 3] = datarowHeader[6].ToString();
+                    //giangvien
+                    excelsheet.Cells[9, 1] = hd.Columns[7].ColumnName+": "+ datarowHeader[7].ToString();
 
                     rowcount = 13;
                     foreach (DataRow datarow in dt.Rows)
