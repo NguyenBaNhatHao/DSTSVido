@@ -9,16 +9,18 @@ using DSTSVido.Models;
 using System.Net.Http;
 using DSTSVido.Dtos;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace DSTSVido._Repositories
 {
     public class SinhvienRepository : BaseRepository, ISinhvienReposity
     {
-
+        ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
         public async Task<string> GetAll()
         {
+            Console.WriteLine(settings[1].Name);
             HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync("https://admintt.viendong.edu.vn/api/sinhvien").GetAwaiter().GetResult();
+            HttpResponseMessage httpResponse = client.GetAsync(settings[1].ConnectionString).GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -33,7 +35,7 @@ namespace DSTSVido._Repositories
             diemdanhs.nguoiTao = model.nguoiTao;
             string searchDiemdanh = JsonConvert.SerializeObject(diemdanhs);
             HttpContent c = new StringContent(searchDiemdanh, Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponse = client.PostAsync("http://localhost:5032/api/diemdanh", c).GetAwaiter().GetResult();
+            HttpResponseMessage httpResponse = client.PostAsync(settings[2].ConnectionString, c).GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -47,7 +49,7 @@ namespace DSTSVido._Repositories
             diemdanhs.KhoaHoc = model.KhoaHoc;
             string searchDiemdanh = JsonConvert.SerializeObject(diemdanhs);
             HttpContent c = new StringContent(searchDiemdanh, Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponse = client.PostAsync("http://localhost:5032/api/diemdanh/header", c).GetAwaiter().GetResult();
+            HttpResponseMessage httpResponse = client.PostAsync(settings[2].ConnectionString + "/header", c).GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -69,7 +71,7 @@ namespace DSTSVido._Repositories
             HttpClient client = new HttpClient();
             string sinhvien = JsonConvert.SerializeObject(model);
             HttpContent c = new StringContent(sinhvien, Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponse = client.PostAsync("https://admintt.viendong.edu.vn/api/sinhvien", c).GetAwaiter().GetResult(); 
+            HttpResponseMessage httpResponse = client.PostAsync(settings[1].ConnectionString, c).GetAwaiter().GetResult(); 
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -80,7 +82,7 @@ namespace DSTSVido._Repositories
             HttpClient client = new HttpClient();
             string sinhvien = JsonConvert.SerializeObject(model);
             HttpContent c = new StringContent(sinhvien, Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponse = client.PutAsync("https://admintt.viendong.edu.vn/api/sinhvien/" + model.id, c).GetAwaiter().GetResult(); //check doi link api
+            HttpResponseMessage httpResponse = client.PutAsync(settings[1].ConnectionString + "/" + model.id, c).GetAwaiter().GetResult(); //check doi link api
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -100,7 +102,7 @@ namespace DSTSVido._Repositories
         public async Task<string> GetApicboxLop()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/lop").GetAwaiter().GetResult();
+            HttpResponseMessage httpResponse = client.GetAsync(settings[2].ConnectionString + "/lop").GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -108,7 +110,7 @@ namespace DSTSVido._Repositories
         public async Task<string> GetApicboxMonhoc()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/monhoc").GetAwaiter().GetResult();
+            HttpResponseMessage httpResponse = client.GetAsync(settings[2].ConnectionString + "/monhoc").GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -116,7 +118,7 @@ namespace DSTSVido._Repositories
         public async Task<string> GetApicboxNguoitao()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/nguoitao").GetAwaiter().GetResult();
+            HttpResponseMessage httpResponse = client.GetAsync(settings[2].ConnectionString + "/nguoitao").GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
@@ -125,7 +127,7 @@ namespace DSTSVido._Repositories
         public async Task<string> GetApicboxKhoahoc()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync("http://localhost:5032/api/diemdanh/khoahoc").GetAwaiter().GetResult();
+            HttpResponseMessage httpResponse = client.GetAsync(settings[2].ConnectionString + "/khoahoc").GetAwaiter().GetResult();
             httpResponse.EnsureSuccessStatusCode();
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;

@@ -171,22 +171,22 @@ namespace DSTSVido
         public string ImageTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Lop
         {
-            get { return (string)cboxlop.SelectedItem; }
+            get { return (string)cboxlop.Text; }
             set { cboxlop.SelectedItem = value; }
         }
         public string Monhoc
         {
-            get { return (string)cboxmonhoc.SelectedItem; }
+            get { return (string)cboxmonhoc.Text; }
             set { cboxmonhoc.SelectedItem = value; }
         }
         public string Nguoitao
         {
-            get { return (string)cboxnguoitao.SelectedItem; }
+            get { return (string)cboxnguoitao.Text; }
             set { cboxnguoitao.SelectedItem = value; }
         }
         public string Khoahoc 
         {
-            get { return (string)cboxKhoahoc.SelectedItem; }
+            get { return (string)cboxKhoahoc.Text; }
             set { cboxKhoahoc.SelectedItem = value; }
         }
         public event EventHandler SearchEvent;

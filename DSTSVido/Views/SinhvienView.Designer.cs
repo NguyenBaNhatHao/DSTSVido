@@ -91,7 +91,7 @@ namespace DSTSVido
             this.tabPageSvTrungTuyen.Controls.Add(this.label13);
             this.tabPageSvTrungTuyen.Location = new System.Drawing.Point(4, 29);
             this.tabPageSvTrungTuyen.Name = "tabPageSvTrungTuyen";
-            this.tabPageSvTrungTuyen.Size = new System.Drawing.Size(905, 454);
+            this.tabPageSvTrungTuyen.Size = new System.Drawing.Size(1015, 547);
             this.tabPageSvTrungTuyen.TabIndex = 2;
             this.tabPageSvTrungTuyen.Text = "Data Xet Tuyen";
             this.tabPageSvTrungTuyen.UseVisualStyleBackColor = true;
@@ -166,7 +166,7 @@ namespace DSTSVido
             this.tcTrungTuyenDetail.Location = new System.Drawing.Point(0, 0);
             this.tcTrungTuyenDetail.Name = "tcTrungTuyenDetail";
             this.tcTrungTuyenDetail.SelectedIndex = 0;
-            this.tcTrungTuyenDetail.Size = new System.Drawing.Size(913, 487);
+            this.tcTrungTuyenDetail.Size = new System.Drawing.Size(1023, 580);
             this.tcTrungTuyenDetail.TabIndex = 3;
             // 
             // tabPageSvDetail
@@ -193,8 +193,8 @@ namespace DSTSVido
             this.tabPageSvDetail.Controls.Add(this.label15);
             this.tabPageSvDetail.Location = new System.Drawing.Point(4, 29);
             this.tabPageSvDetail.Name = "tabPageSvDetail";
-            this.tabPageSvDetail.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageSvDetail.Size = new System.Drawing.Size(1209, 575);
+            this.tabPageSvDetail.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSvDetail.Size = new System.Drawing.Size(1015, 547);
             this.tabPageSvDetail.TabIndex = 3;
             this.tabPageSvDetail.Text = "SVDetail";
             this.tabPageSvDetail.UseVisualStyleBackColor = true;
@@ -376,8 +376,8 @@ namespace DSTSVido
             this.tbDiemdanh.Controls.Add(this.gvDiemdanh);
             this.tbDiemdanh.Location = new System.Drawing.Point(4, 29);
             this.tbDiemdanh.Name = "tbDiemdanh";
-            this.tbDiemdanh.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tbDiemdanh.Size = new System.Drawing.Size(1209, 575);
+            this.tbDiemdanh.Padding = new System.Windows.Forms.Padding(3);
+            this.tbDiemdanh.Size = new System.Drawing.Size(1015, 547);
             this.tbDiemdanh.TabIndex = 4;
             this.tbDiemdanh.Text = "Diem danh";
             this.tbDiemdanh.UseVisualStyleBackColor = true;
@@ -388,7 +388,7 @@ namespace DSTSVido
             this.cboxKhoahoc.Items.AddRange(new object[] {
             "13"});
             this.cboxKhoahoc.Location = new System.Drawing.Point(815, 57);
-            this.cboxKhoahoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboxKhoahoc.Margin = new System.Windows.Forms.Padding(2);
             this.cboxKhoahoc.Name = "cboxKhoahoc";
             this.cboxKhoahoc.Size = new System.Drawing.Size(114, 28);
             this.cboxKhoahoc.TabIndex = 18;
@@ -406,7 +406,7 @@ namespace DSTSVido
             // btnSearchdd
             // 
             this.btnSearchdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchdd.Location = new System.Drawing.Point(1077, 96);
+            this.btnSearchdd.Location = new System.Drawing.Point(870, 96);
             this.btnSearchdd.Name = "btnSearchdd";
             this.btnSearchdd.Size = new System.Drawing.Size(105, 32);
             this.btnSearchdd.TabIndex = 16;
@@ -419,7 +419,7 @@ namespace DSTSVido
             this.cboxnguoitao.Items.AddRange(new object[] {
             "ctphu"});
             this.cboxnguoitao.Location = new System.Drawing.Point(815, 16);
-            this.cboxnguoitao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboxnguoitao.Margin = new System.Windows.Forms.Padding(2);
             this.cboxnguoitao.Name = "cboxnguoitao";
             this.cboxnguoitao.Size = new System.Drawing.Size(114, 28);
             this.cboxnguoitao.TabIndex = 15;
@@ -438,7 +438,7 @@ namespace DSTSVido
             // 
             this.cboxmonhoc.FormattingEnabled = true;
             this.cboxmonhoc.Location = new System.Drawing.Point(97, 57);
-            this.cboxmonhoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboxmonhoc.Margin = new System.Windows.Forms.Padding(2);
             this.cboxmonhoc.Name = "cboxmonhoc";
             this.cboxmonhoc.Size = new System.Drawing.Size(501, 28);
             this.cboxmonhoc.TabIndex = 13;
@@ -467,7 +467,7 @@ namespace DSTSVido
             // 
             this.cboxlop.FormattingEnabled = true;
             this.cboxlop.Location = new System.Drawing.Point(97, 14);
-            this.cboxlop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboxlop.Margin = new System.Windows.Forms.Padding(2);
             this.cboxlop.Name = "cboxlop";
             this.cboxlop.Size = new System.Drawing.Size(501, 28);
             this.cboxlop.TabIndex = 10;
@@ -475,7 +475,7 @@ namespace DSTSVido
             // btnExportData
             // 
             this.btnExportData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportData.Location = new System.Drawing.Point(1077, 194);
+            this.btnExportData.Location = new System.Drawing.Point(870, 149);
             this.btnExportData.Name = "btnExportData";
             this.btnExportData.Size = new System.Drawing.Size(106, 32);
             this.btnExportData.TabIndex = 9;
@@ -492,16 +492,16 @@ namespace DSTSVido
             this.gvDiemdanh.Location = new System.Drawing.Point(20, 96);
             this.gvDiemdanh.Name = "gvDiemdanh";
             this.gvDiemdanh.RowHeadersWidth = 51;
-            this.gvDiemdanh.Size = new System.Drawing.Size(1027, 473);
+            this.gvDiemdanh.Size = new System.Drawing.Size(830, 400);
             this.gvDiemdanh.TabIndex = 6;
             // 
             // SinhvienView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 487);
+            this.ClientSize = new System.Drawing.Size(1023, 580);
             this.Controls.Add(this.tcTrungTuyenDetail);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SinhvienView";
             this.Text = "Form1";
             this.tabPageSvTrungTuyen.ResumeLayout(false);
