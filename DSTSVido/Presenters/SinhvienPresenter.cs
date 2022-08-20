@@ -53,7 +53,7 @@ namespace DSTSVido.Presenters
             try
             {
                 var diemdanhs = new List<Diemdanh>();
-                diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao)).ToList();
+                diemdanhs = (reposity.GetByValue(this.view.Lop)).ToList();
                 var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
                 DiemdanhList = JsonConvert.DeserializeObject<IEnumerable<Diemdanh>>(dataSearch.Result);
                 diemdanhbindingSource.DataSource = DiemdanhList;
@@ -167,7 +167,7 @@ namespace DSTSVido.Presenters
         }
         private void Dropdowncblop(object sender, EventArgs e)
         {
-            reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao);
+            reposity.GetByValue(this.view.Lop);
         }
         private void ExportExcel(object sender, EventArgs e)
         {
@@ -175,8 +175,8 @@ namespace DSTSVido.Presenters
             {
                 var diemdanhs = new List<Diemdanh>();
                 var HeaderDiemdanh = new List<DiemdanhHeaderSendDTO>();
-                diemdanhs = (reposity.GetByValue(this.view.Lop, this.view.Monhoc, this.view.Nguoitao)).ToList();
-                HeaderDiemdanh = (reposity.GetByValueHeader(this.view.Lop, this.view.Monhoc, this.view.Nguoitao, this.view.Khoahoc)).ToList();
+                diemdanhs = (reposity.GetByValue(this.view.Lop)).ToList();
+                HeaderDiemdanh = (reposity.GetByValueHeader(this.view.Lop)).ToList();
                 var dataSearch = reposity.GetDiemdanh(diemdanhs[0]);
                 var dataHeader = reposity.GetDiemdanhHeader(HeaderDiemdanh[0]);
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(dataSearch.Result, typeof(DataTable));
@@ -270,24 +270,34 @@ namespace DSTSVido.Presenters
                     foreach (DataRow datarow in dt.Rows)
                     {
                         excelsheet.Cells[rowcount, 3] = datarow[0].ToString();
-                        excelsheet.Cells[rowcount, 2] = datarow[2].ToString();
+                        excelsheet.Cells[rowcount, 2] = datarow[3].ToString();
                         excelsheet.Cells[rowcount, 4] = datarow[1].ToString();
-                        excelsheet.Cells[rowcount, 5] = datarow[5].ToString();
+                        excelsheet.Cells[rowcount, 5] = datarow[2].ToString();
 
                         rowcount += 1;
                     }
 
                     rowcount = 12;
                     int row = 13;
-                    for (int i =12; i<dt.Columns.Count; i++)
+                    
+                    for (int i =4; i<dt.Columns.Count; i++)
                     {
-                        excelsheet.Cells[rowcount, i-6] = dt.Columns[i].ColumnName;
+                        excelsheet.Cells[rowcount, i+2] = dt.Columns[i].ColumnName;
+                        
                     }
                     foreach (DataRow datarow in dt.Rows)
                     {
-                        for(int col = 12; col < dt.Columns.Count; col++)
+                        for(int col = 6; col < dt.Columns.Count; col++)
                         {
-                            excelsheet.Cells[row, col - 6] = datarow[col].ToString();
+                            if(DBNull.Value.Equals(datarow[col - 2]))
+                            {
+                                excelsheet.Cells[row, col] = "0";
+                            }
+                            else
+                            {
+                                excelsheet.Cells[row, col] = datarow[col - 2].ToString();
+                            }
+                                     
                         }
                         row++;
                     }

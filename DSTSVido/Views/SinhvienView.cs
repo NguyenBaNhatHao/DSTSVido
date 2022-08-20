@@ -50,39 +50,7 @@ namespace DSTSVido
                     cboxlop.Items.Add(jsondata[i].ma);
                 }
             };
-            cboxmonhoc.DropDown += (s, e) =>
-            {
-                cboxmonhoc.Items.Clear();
-                SinhvienRepository repository = new SinhvienRepository();
-                var ItemMonhoc = repository.GetApicboxMonhoc().Result;
-                DiemdanhMonhocDTO[] jsondata = JsonConvert.DeserializeObject<DiemdanhMonhocDTO[]>(ItemMonhoc);
-                for (int i = 0; i < jsondata.Length; i++)
-                {
-                    cboxmonhoc.Items.Add(jsondata[i].ten);
-                }
-            };
-            cboxnguoitao.DropDown += (s, e) =>
-            {
-                cboxnguoitao.Items.Clear();
-                SinhvienRepository repository = new SinhvienRepository();
-                var ItemMonhoc = repository.GetApicboxNguoitao().Result;
-                DiemdanhNguoitao[] jsondata = JsonConvert.DeserializeObject<DiemdanhNguoitao[]>(ItemMonhoc);
-                for (int i = 0; i < jsondata.Length; i++)
-                {
-                    cboxnguoitao.Items.Add(jsondata[i].nguoiTao);
-                }
-            };
-            cboxKhoahoc.DropDown += (s, e) =>
-            {
-                cboxKhoahoc.Items.Clear();
-                SinhvienRepository repository = new SinhvienRepository();
-                var ItemMonhoc = repository.GetApicboxKhoahoc().Result;
-                DiemdanhKhoahocDTO[] jsondata = JsonConvert.DeserializeObject<DiemdanhKhoahocDTO[]>(ItemMonhoc);
-                for (int i = 0; i < jsondata.Length; i++)
-                {
-                    cboxKhoahoc.Items.Add(jsondata[i].Khoahoc);
-                }
-            };
+            
             //SearchTT
             btnSreachTT.Click += delegate { SearchEventTT?.Invoke(this, EventArgs.Empty); };
             //btnSreachTT.Click += delegate{SearchStatus?.Invoke(this, EventArgs.Empty);};
@@ -174,21 +142,7 @@ namespace DSTSVido
             get { return (string)cboxlop.Text; }
             set { cboxlop.SelectedItem = value; }
         }
-        public string Monhoc
-        {
-            get { return (string)cboxmonhoc.Text; }
-            set { cboxmonhoc.SelectedItem = value; }
-        }
-        public string Nguoitao
-        {
-            get { return (string)cboxnguoitao.Text; }
-            set { cboxnguoitao.SelectedItem = value; }
-        }
-        public string Khoahoc 
-        {
-            get { return (string)cboxKhoahoc.Text; }
-            set { cboxKhoahoc.SelectedItem = value; }
-        }
+       
         public event EventHandler SearchEvent;
         public event EventHandler SearchEventTT;
         public event EventHandler SendEvent;

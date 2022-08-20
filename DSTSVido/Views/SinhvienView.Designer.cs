@@ -62,13 +62,7 @@ namespace DSTSVido
             this.label20 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tbDiemdanh = new System.Windows.Forms.TabPage();
-            this.cboxKhoahoc = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnSearchdd = new System.Windows.Forms.Button();
-            this.cboxnguoitao = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboxmonhoc = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.cboxlop = new System.Windows.Forms.ComboBox();
             this.btnExportData = new System.Windows.Forms.Button();
@@ -363,13 +357,7 @@ namespace DSTSVido
             // 
             // tbDiemdanh
             // 
-            this.tbDiemdanh.Controls.Add(this.cboxKhoahoc);
-            this.tbDiemdanh.Controls.Add(this.label4);
             this.tbDiemdanh.Controls.Add(this.btnSearchdd);
-            this.tbDiemdanh.Controls.Add(this.cboxnguoitao);
-            this.tbDiemdanh.Controls.Add(this.label3);
-            this.tbDiemdanh.Controls.Add(this.cboxmonhoc);
-            this.tbDiemdanh.Controls.Add(this.label1);
             this.tbDiemdanh.Controls.Add(this.label14);
             this.tbDiemdanh.Controls.Add(this.cboxlop);
             this.tbDiemdanh.Controls.Add(this.btnExportData);
@@ -382,27 +370,6 @@ namespace DSTSVido
             this.tbDiemdanh.Text = "Diem danh";
             this.tbDiemdanh.UseVisualStyleBackColor = true;
             // 
-            // cboxKhoahoc
-            // 
-            this.cboxKhoahoc.FormattingEnabled = true;
-            this.cboxKhoahoc.Items.AddRange(new object[] {
-            "13"});
-            this.cboxKhoahoc.Location = new System.Drawing.Point(815, 57);
-            this.cboxKhoahoc.Margin = new System.Windows.Forms.Padding(2);
-            this.cboxKhoahoc.Name = "cboxKhoahoc";
-            this.cboxKhoahoc.Size = new System.Drawing.Size(114, 28);
-            this.cboxKhoahoc.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(732, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 20);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Khóa học";
-            // 
             // btnSearchdd
             // 
             this.btnSearchdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -412,46 +379,6 @@ namespace DSTSVido
             this.btnSearchdd.TabIndex = 16;
             this.btnSearchdd.Text = "Search";
             this.btnSearchdd.UseVisualStyleBackColor = true;
-            // 
-            // cboxnguoitao
-            // 
-            this.cboxnguoitao.FormattingEnabled = true;
-            this.cboxnguoitao.Items.AddRange(new object[] {
-            "ctphu"});
-            this.cboxnguoitao.Location = new System.Drawing.Point(815, 16);
-            this.cboxnguoitao.Margin = new System.Windows.Forms.Padding(2);
-            this.cboxnguoitao.Name = "cboxnguoitao";
-            this.cboxnguoitao.Size = new System.Drawing.Size(114, 28);
-            this.cboxnguoitao.TabIndex = 15;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(732, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 20);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Người tạo";
-            // 
-            // cboxmonhoc
-            // 
-            this.cboxmonhoc.FormattingEnabled = true;
-            this.cboxmonhoc.Location = new System.Drawing.Point(97, 57);
-            this.cboxmonhoc.Margin = new System.Windows.Forms.Padding(2);
-            this.cboxmonhoc.Name = "cboxmonhoc";
-            this.cboxmonhoc.Size = new System.Drawing.Size(501, 28);
-            this.cboxmonhoc.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 59);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Môn học";
             // 
             // label14
             // 
@@ -551,15 +478,9 @@ namespace DSTSVido
         private System.Windows.Forms.TabPage tbDiemdanh;
         private System.Windows.Forms.DataGridView gvDiemdanh;
         private System.Windows.Forms.Button btnExportData;
-        private System.Windows.Forms.ComboBox cboxnguoitao;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cboxmonhoc;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cboxlop;
         private System.Windows.Forms.Button btnSearchdd;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cboxKhoahoc;
     }
 }
 

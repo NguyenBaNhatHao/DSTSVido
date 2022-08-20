@@ -9,8 +9,6 @@ namespace DSTSVido.Dtos
 {
     public class diemdanhSendDto
     {
-        public string Monhoc { get; set; }
         public string Lop { get; set; }
-        public string nguoiTao { get; set; }
     }
 }

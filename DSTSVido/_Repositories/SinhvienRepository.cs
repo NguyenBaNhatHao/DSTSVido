@@ -31,8 +31,6 @@ namespace DSTSVido._Repositories
             HttpClient client = new HttpClient();
             diemdanhSendDto diemdanhs = new diemdanhSendDto();
             diemdanhs.Lop = model.Lop;
-            diemdanhs.Monhoc = model.Monhoc;
-            diemdanhs.nguoiTao = model.nguoiTao;
             string searchDiemdanh = JsonConvert.SerializeObject(diemdanhs);
             HttpContent c = new StringContent(searchDiemdanh, Encoding.UTF8, "application/json");
             HttpResponseMessage httpResponse = client.PostAsync(settings[2].ConnectionString, c).GetAwaiter().GetResult();
@@ -45,8 +43,6 @@ namespace DSTSVido._Repositories
             HttpClient client = new HttpClient();
             DiemdanhHeaderSendDTO diemdanhs = new DiemdanhHeaderSendDTO();
             diemdanhs.Lop = model.Lop;
-            diemdanhs.Monhoc = model.Monhoc;
-            diemdanhs.KhoaHoc = model.KhoaHoc;
             string searchDiemdanh = JsonConvert.SerializeObject(diemdanhs);
             HttpContent c = new StringContent(searchDiemdanh, Encoding.UTF8, "application/json");
             HttpResponseMessage httpResponse = client.PostAsync(settings[2].ConnectionString + "/header", c).GetAwaiter().GetResult();
@@ -54,13 +50,11 @@ namespace DSTSVido._Repositories
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
         }
-        public IEnumerable<Diemdanh> GetByValue(string Lop, string Monhoc, string Nguoitao)
+        public IEnumerable<Diemdanh> GetByValue(string Lop)
         {
             var ListData = new List<Diemdanh>();
             var diemdanh = new Diemdanh();
             diemdanh.Lop = Lop.ToString();
-            diemdanh.Monhoc = Monhoc.ToString();
-            diemdanh.nguoiTao = Nguoitao.ToString();
             
             ListData.Add(diemdanh);
             return ListData;
@@ -88,13 +82,11 @@ namespace DSTSVido._Repositories
             return responseString;
         }
 
-        public IEnumerable<DiemdanhHeaderSendDTO> GetByValueHeader(string Lop, string Monhoc, string Nguoitao, string Khoahoc)
+        public IEnumerable<DiemdanhHeaderSendDTO> GetByValueHeader(string Lop)
         {
             var ListData = new List<DiemdanhHeaderSendDTO>();
             var diemdanh = new DiemdanhHeaderSendDTO();
             diemdanh.Lop = Lop.ToString();
-            diemdanh.Monhoc = Monhoc.ToString();
-            diemdanh.KhoaHoc = Khoahoc.ToString();
             ListData.Add(diemdanh);
             return ListData;
         }
@@ -107,30 +99,6 @@ namespace DSTSVido._Repositories
             string responseString = await httpResponse.Content.ReadAsStringAsync();
             return responseString;
         }
-        public async Task<string> GetApicboxMonhoc()
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync(settings[2].ConnectionString + "/monhoc").GetAwaiter().GetResult();
-            httpResponse.EnsureSuccessStatusCode();
-            string responseString = await httpResponse.Content.ReadAsStringAsync();
-            return responseString;
-        }
-        public async Task<string> GetApicboxNguoitao()
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync(settings[2].ConnectionString + "/nguoitao").GetAwaiter().GetResult();
-            httpResponse.EnsureSuccessStatusCode();
-            string responseString = await httpResponse.Content.ReadAsStringAsync();
-            return responseString;
-        }
-
-        public async Task<string> GetApicboxKhoahoc()
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage httpResponse = client.GetAsync(settings[2].ConnectionString + "/khoahoc").GetAwaiter().GetResult();
-            httpResponse.EnsureSuccessStatusCode();
-            string responseString = await httpResponse.Content.ReadAsStringAsync();
-            return responseString;
-        }
+        
     }
 }
