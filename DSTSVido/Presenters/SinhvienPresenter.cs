@@ -224,7 +224,7 @@ namespace DSTSVido.Presenters
                 // creation a new work book
                 excelworkbook = excel.Workbooks.Open(FilePath, Type.Missing, false, Type.Missing, Type.Missing,
             Type.Missing, true, Type.Missing, Type.Missing,
-            true, Type.Missing, Type.Missing, Type.Missing,
+            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
             Type.Missing, Type.Missing);
 
                 //excelsheet
@@ -287,15 +287,15 @@ namespace DSTSVido.Presenters
                     }
                     foreach (DataRow datarow in dt.Rows)
                     {
-                        for(int col = 6; col < dt.Columns.Count; col++)
+                        for(int col = 4; col < dt.Columns.Count; col++)
                         {
-                            if(DBNull.Value.Equals(datarow[col - 2]))
+                            if(DBNull.Value.Equals(datarow[col]))
                             {
-                                excelsheet.Cells[row, col] = "0";
+                                excelsheet.Cells[row, col + 2] = "0";
                             }
                             else
                             {
-                                excelsheet.Cells[row, col] = datarow[col - 2].ToString();
+                                excelsheet.Cells[row, col+2] = datarow[col].ToString();
                             }
                                      
                         }
@@ -303,12 +303,12 @@ namespace DSTSVido.Presenters
                     }
 
                     // now resize the columns
-                    excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, hd.Columns.Count]];
-                    excelCellRange.EntireColumn.AutoFit();
+                    //excelCellRange = excelsheet.Range[excelsheet.Cells[1, 1], excelsheet.Cells[rowcount, hd.Columns.Count]];
+                    //excelCellRange.EntireColumn.AutoFit();
                 }
                 //now save the work book and exit the ecel
                 excelworkbook.SaveAs(FolderExcel+@"\"+this.view.Lop+@".xls");
-                excelworkbook.Close(true,FilePath);
+                excelworkbook.Close();
                 excel.Quit();
                 //  }
                 MessageBox.Show(DialogResult.OK.ToString());
